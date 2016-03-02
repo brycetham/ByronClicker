@@ -951,7 +951,7 @@ Game.Launch=function()
 		//falling cookies
 		Game.cookieParticles=[];
 		var str='';
-		for (var i=0;i<40;i++)
+		for (var i=0;i<100;i++)
 		{
 			Game.cookieParticles[i]={x:0,y:0,life:-1};
 			str+='<div id="cookieParticle'+i+'" class="cookieParticle"></div>';
@@ -1004,7 +1004,7 @@ Game.Launch=function()
 				me.x=x;
 				me.y=y;
 				var r=Math.floor(Math.random()*360);
-				me.l.style.backgroundPosition=(Math.floor(Math.random()*8)*64)+'px 0px';
+				me.l.style.backgroundPosition=(Math.floor(Math.random()*32)*64)+'px 0px';
 				me.l.style.transform='rotate('+r+'deg)';
 				me.l.style.mozTransform='rotate('+r+'deg)';
 				me.l.style.webkitTransform='rotate('+r+'deg)';
