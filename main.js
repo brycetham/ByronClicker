@@ -673,7 +673,7 @@ Game.Launch=function()
 			if (Game.Has('Quadrillion fingers')) add+=20;
 			if (Game.Has('Quintillion fingers')) add+=100;
 			var num=0;
-			for (var i in Game.Objects) {if (Game.Objects[i].name!='Cursor') num+=Game.Objects[i].amount;}
+			for (var i in Game.Objects) {if (Game.Objects[i].name!='Gavel') num+=Game.Objects[i].amount;}
 			add=add*num;
 			if (Game.Has('Plastic mouse')) add+=Game.cookiesPs*0.01;
 			if (Game.Has('Iron mouse')) add+=Game.cookiesPs*0.01;
@@ -2062,7 +2062,7 @@ Game.Launch=function()
 		}
 		
 		//define objects
-		new Game.Object('Cursor','cursor|cursors|clicked','Autoclicks once every 10 seconds.','cursor','cursoricon','',15,function(){
+		new Game.Object('Gavel','cursor|cursors|clicked','Autoclicks once every 10 seconds.','cursor','cursoricon','',15,function(){
 			var add=0;
 			if (Game.Has('Thousand fingers')) add+=0.1;
 			if (Game.Has('Million fingers')) add+=0.5;
@@ -2071,7 +2071,7 @@ Game.Launch=function()
 			if (Game.Has('Quadrillion fingers')) add+=20;
 			if (Game.Has('Quintillion fingers')) add+=100;
 			var num=0;
-			for (var i in Game.Objects) {if (Game.Objects[i].name!='Cursor') num+=Game.Objects[i].amount;}
+			for (var i in Game.Objects) {if (Game.Objects[i].name!='Gavel') num+=Game.Objects[i].amount;}
 			add=add*num;
 			return Game.ComputeCps(0.1,Game.Has('Reinforced index finger')*0.1,Game.Has('Carpal tunnel prevention cream')+Game.Has('Ambidextrous'),add);
 		},function(){//draw function for cursors
@@ -3184,7 +3184,7 @@ Game.Launch=function()
 		
 		if (Game.prefs.particles)
 		{
-			var amount=Game.Objects['Cursor'].amount;
+			var amount=Game.Objects['Gavel'].amount;
 			for (var i=0;i<amount;i++)
 			{
 				var me=l('cursor'+i);
