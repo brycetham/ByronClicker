@@ -173,11 +173,11 @@ Game.Launch=function()
 		Game.T=0;
 		Game.fps=30;
 		
-		Game.version=1.036;
-		Game.beta=0;
+		Game.version=0.05;
+		Game.beta=1;
 		l('versionNumber').innerHTML='v.'+Game.version+(Game.beta?' <span style="color:#ff0;">beta</span>':'');
 		//l('links').innerHTML=(Game.beta?'<a href="../" target="blank">Live version</a> | ':'<a href="beta" target="blank">Try the beta!</a> | ')+'<a href="http://orteil.dashnet.org/experiments/cookie/" target="blank">Cookie Clicker Classic</a>';
-		l('links').innerHTML='<a href="http://orteil.dashnet.org/experiments/cookie/" target="blank">Cookie Clicker Classic</a>';
+		l('links').innerHTML='<a href="http://www.ucicirclek.com" target="blank">return to ucicirclek.com</a>';
 		
 		//latency compensator stuff
 		Game.time=new Date().getTime();
@@ -1004,7 +1004,7 @@ Game.Launch=function()
 				me.x=x;
 				me.y=y;
 				var r=Math.floor(Math.random()*360);
-				me.l.style.backgroundPosition=(Math.floor(Math.random()*32)*64)+'px 0px';
+				me.l.style.backgroundPosition=(Math.floor(Math.random()*64)*64)+'px 0px';
 				me.l.style.transform='rotate('+r+'deg)';
 				me.l.style.mozTransform='rotate('+r+'deg)';
 				me.l.style.webkitTransform='rotate('+r+'deg)';
@@ -1656,12 +1656,12 @@ Game.Launch=function()
 				'<q>Too late.</q><sig>Klamma</sig>'
 				]));
 				
-				if (Game.Objects['Farm'].amount>0) list.push(choose([
-				'News : cookie farms suspected of employing undeclared elderly workforce!',
-				'News : cookie farms release harmful chocolate in our rivers, says scientist!',
-				'News : genetically-modified chocolate controversy strikes cookie farmers!',
-				'News : free-range farm cookies popular with today\'s hip youth, says specialist.',
-				'News : farm cookies deemed unfit for vegans, says nutritionist.'
+				if (Game.Objects['Seaside'].amount>0) list.push(choose([
+				'News : Seaside suspected of employing undeclared elderly workforce!',
+				'News : Seaside releases harmful chocolate in our rivers, says scientist!',
+				'News : genetically-modified chocolate controversy strikes Seaside!',
+				'News : free-range Seaside cookies popular with today\'s hip youth, says specialist.',
+				'News : Seaside cookies deemed unfit for vegans, says nutritionist.'
 				]));
 				
 				if (Game.Objects['Factory'].amount>0) list.push(choose([
@@ -2157,12 +2157,12 @@ Game.Launch=function()
 			}
 		};
 		
-		new Game.Object('Farm','farm|farms|harvested','Grows cookie plants from cookie seeds.','farm','farmIcon','farmBackground',500,function(){
+		new Game.Object('Seaside','farm|farms|harvested','Bake Byron cookies and Byron croissants.','farm','farmIcon','farmBackground',500,function(){
 			return Game.ComputeCps(2,Game.Has('Cheap hoes')*0.5,Game.Has('Fertilizer')+Game.Has('Cookie trees')+Game.Has('Genetically-modified cookies'));
 		},Game.NewDrawFunction(0,16,16,64,2,32),function(){
 			if (this.amount>=1) Game.Unlock(['Cheap hoes','Fertilizer']);if (this.amount>=10) Game.Unlock('Cookie trees');if (this.amount>=50) Game.Unlock('Genetically-modified cookies');
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Farmer Klammas');
-			if (this.amount>=1) Game.Win('My first farm');if (this.amount>=50) Game.Win('Reap what you sow');if (this.amount>=100) Game.Win('Farm ill');
+			if (this.amount>=1) Game.Win('My first Seaside');if (this.amount>=50) Game.Win('Reap what you sow');if (this.amount>=100) Game.Win('Seaside ill');
 		});
 		
 		new Game.Object('Factory','factory|factories|mass-produced','Produces large quantities of cookies.','factory','factoryIcon','factoryBackground',3000,function(){
@@ -2398,9 +2398,9 @@ Game.Launch=function()
 		new Game.Upgrade('Lubricated dentures','Klammas are <b>twice</b> as efficient.<q>Squish</q>',Game.Objects['Klamma'].basePrice*tier3,[1,1]);
 		
 		order=300;
-		new Game.Upgrade('Cheap hoes','Farms gain <b>+0.5</b> base CpS.',Game.Objects['Farm'].basePrice*tier1,[2,0]);
-		new Game.Upgrade('Fertilizer','Farms are <b>twice</b> as efficient.<q>It\'s chocolate, I swear.</q>',Game.Objects['Farm'].basePrice*tier2,[2,0]);
-		new Game.Upgrade('Cookie trees','Farms are <b>twice</b> as efficient.<q>A relative of the breadfruit.</q>',Game.Objects['Farm'].basePrice*tier3,[2,1]);
+		new Game.Upgrade('Cheap hoes','Seaside gains <b>+0.5</b> base CpS.',Game.Objects['Seaside'].basePrice*tier1,[2,0]);
+		new Game.Upgrade('Fertilizer','Seaside is <b>twice</b> as efficient.<q>It\'s chocolate, I swear.</q>',Game.Objects['Seaside'].basePrice*tier2,[2,0]);
+		new Game.Upgrade('Cookie trees','Seaside is <b>twice</b> as efficient.<q>A relative of the breadfruit.</q>',Game.Objects['Seaside'].basePrice*tier3,[2,1]);
 		
 		order=400;
 		new Game.Upgrade('Sturdier conveyor belts','Factories gain <b>+4</b> base CpS.',Game.Objects['Factory'].basePrice*tier1,[4,0]);
@@ -2454,7 +2454,7 @@ Game.Launch=function()
 		new Game.Upgrade('Quadrillion fingers','The mouse and cursors gain <b>+20</b> cookies for each non-cursor object owned.<q>clickityclickityclickityclickityclick</q>',50000000000,[3,6]);
 		
 		order=200;new Game.Upgrade('Prune juice','Klammas are <b>twice</b> as efficient.<q>Gets me going.</q>',Game.Objects['Klamma'].basePrice*tier4,[1,2]);
-		order=300;new Game.Upgrade('Genetically-modified cookies','Farms are <b>twice</b> as efficient.<q>All-natural mutations.</q>',Game.Objects['Farm'].basePrice*tier4,[2,2]);
+		order=300;new Game.Upgrade('Genetically-modified cookies','Seaside is <b>twice</b> as efficient.<q>All-natural mutations.</q>',Game.Objects['Seaside'].basePrice*tier4,[2,2]);
 		order=400;new Game.Upgrade('Radium reactors','Factories are <b>twice</b> as efficient.<q>Gives your cookies a healthy glow.</q>',Game.Objects['Factory'].basePrice*tier4,[4,2]);
 		order=500;new Game.Upgrade('Ultimadrill','Mines are <b>twice</b> as efficient.<q>Pierce the heavens, etc.</q>',Game.Objects['Mine'].basePrice*tier4,[3,2]);
 		order=600;new Game.Upgrade('Warp drive','Shipments are <b>twice</b> as efficient.',Game.Objects['Shipment'].basePrice*tier4,[5,2]);
@@ -2476,7 +2476,7 @@ Game.Launch=function()
 		type='';power=0;
 		
 		order=250;
-		new Game.Upgrade('Farmer Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Farm'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Farmer Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Seaside'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Worker Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Factory'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Miner Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Mine'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Cosmic Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Shipment'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
@@ -2744,9 +2744,9 @@ Game.Launch=function()
 		new Game.Achievement('Retirement home','Have <b>100</b> Klammas.',[1,2]);
 		
 		order=1200;
-		new Game.Achievement('My first farm','Have <b>1</b> farm.',[2,0]);
-		new Game.Achievement('Reap what you sow','Have <b>50</b> farms.',[2,1]);
-		new Game.Achievement('Farm ill','Have <b>100</b> farms.',[2,2]);
+		new Game.Achievement('My first Seaside','Have <b>1</b> Seaside.',[2,0]);
+		new Game.Achievement('Reap what you sow','Have <b>50</b> Seasides.',[2,1]);
+		new Game.Achievement('Seaside ill','Have <b>100</b> Seasides.',[2,2]);
 		
 		order=1300;
 		new Game.Achievement('Production chain','Have <b>1</b> factory.',[4,0]);
