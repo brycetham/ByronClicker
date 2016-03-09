@@ -1346,7 +1346,7 @@ Game.Launch=function()
 				'</div><div class="subsection update small">'+
 				'<div class="title">26/08/2013 - more tweaks</div>'+
 				'<div class="listing">-tweaked a couple cursor upgrades</div>'+
-				'<div class="listing">-made time machines less powerful</div>'+
+				'<div class="listing">-made Time Family less powerful</div>'+
 				'<div class="listing">-added offline mode option</div>'+
 				
 				'</div><div class="subsection update small">'+
@@ -1638,7 +1638,7 @@ Game.Launch=function()
 				]));
 				
 				if (Game.HasAchiev('Just wrong')) list.push(choose([
-				'News : cookie manufacturer downsizes, sells own grandmother!',
+				'News : cookie manufacturer downsizes, sells own Klamma!',
 				'<q>It has betrayed us, the filthy little thing.</q><sig>Klamma</sig>',
 				'<q>It tried to get rid of us, the nasty little thing.</q><sig>Klamma</sig>',
 				'<q>It thought we would go away by selling us. How quaint.</q><sig>Klamma</sig>',
@@ -1664,12 +1664,12 @@ Game.Launch=function()
 				'News : Seaside cookies deemed unfit for vegans, says nutritionist.'
 				]));
 				
-				if (Game.Objects['Factory'].amount>0) list.push(choose([
-				'News : cookie factories linked to global warming!',
-				'News : cookie factories involved in chocolate weather controversy!',
-				'News : cookie factories on strike, robotic minions employed to replace workforce!',
-				'News : cookie factories on strike - workers demand to stop being paid in cookies!',
-				'News : factory-made cookies linked to obesity, says study.'
+				if (Game.Objects['SSL'].amount>0) list.push(choose([
+				'News : SSLs linked to global warming!',
+				'News : SSLs involved in chocolate weather controversy!',
+				'News : SSLs on strike, robotic minions employed to replace workforce!',
+				'News : SSLs on strike - workers demand to stop being paid in cookies!',
+				'News : SSL-made cookies linked to obesity, says study.'
 				]));
 				
 				if (Game.Objects['Mine'].amount>0) list.push(choose([
@@ -1680,7 +1680,7 @@ Game.Launch=function()
 				'News : depths of chocolate mines found to house "peculiar, chocolaty beings"!'
 				]));
 				
-				if (Game.Objects['Shipment'].amount>0) list.push(choose([
+				if (Game.Objects['Single Service Wagon'].amount>0) list.push(choose([
 				'News : new chocolate planet found, becomes target of cookie-trading spaceships!',
 				'News : massive chocolate planet found with 99.8% certified pure dark chocolate core!',
 				'News : space tourism booming as distant planets attract more bored millionaires!',
@@ -1704,12 +1704,12 @@ Game.Launch=function()
 				'News : "do not settle near portals," says specialist; "your children will become strange and corrupted inside."'
 				]));
 				
-				if (Game.Objects['Time machine'].amount>0) list.push(choose([
-				'News : time machines involved in history-rewriting scandal! Or are they?',
-				'News : time machines used in unlawful time tourism!',
+				if (Game.Objects['Time Family'].amount>0) list.push(choose([
+				'News : Time Family involved in history-rewriting scandal! Or are they?',
+				'News : Time Family used in unlawful time tourism!',
 				'News : cookies brought back from the past "unfit for human consumption", says historian.',
 				'News : various historical figures inexplicably replaced with talking lumps of dough!',
-				'News : "I have seen the future," says time machine operator, "and I do not wish to go there again."'
+				'News : "I have seen the future," says Patricia Zarate, "and I do not wish to go there again."'
 				]));
 				
 				if (Game.Objects['Antimatter condenser'].amount>0) list.push(choose([
@@ -2165,7 +2165,7 @@ Game.Launch=function()
 			if (this.amount>=1) Game.Win('My first Seaside');if (this.amount>=50) Game.Win('Reap what you sow');if (this.amount>=100) Game.Win('Seaside ill');
 		});
 		
-		new Game.Object('Factory','factory|factories|mass-produced','Produces large quantities of cookies.','factory','factoryIcon','factoryBackground',3000,function(){
+		new Game.Object('SSL','factory|factories|mass-produced','Produces large quantities of cookies.','factory','factoryIcon','factoryBackground',3000,function(){
 			return Game.ComputeCps(10,Game.Has('Sturdier conveyor belts')*4,Game.Has('Child labor')+Game.Has('Sweatshop')+Game.Has('Radium reactors'));
 		},Game.NewDrawFunction(0,32,2,64,1,-22),function(){
 			if (this.amount>=1) Game.Unlock(['Sturdier conveyor belts','Child labor']);if (this.amount>=10) Game.Unlock('Sweatshop');if (this.amount>=50) Game.Unlock('Radium reactors');
@@ -2181,13 +2181,14 @@ Game.Launch=function()
 			if (this.amount>=1) Game.Win('You know the drill');if (this.amount>=50) Game.Win('Excavation site');if (this.amount>=100) Game.Win('Hollow the planet');
 		});
 		
-		new Game.Object('Shipment','shipment|shipments|shipped','Brings in fresh cookies from the cookie planet.','shipment','shipmentIcon','shipmentBackground',40000,function(){
+		new Game.Object('Single Service Wagon','shipment|shipments|shipped','Brings in fresh cookies from the cookie planet.','shipment','shipmentIcon','shipmentBackground',40000,function(){
 			return Game.ComputeCps(100,Game.Has('Vanilla nebulae')*30,Game.Has('Wormholes')+Game.Has('Frequent flyer')+Game.Has('Warp drive'));
 		},Game.NewDrawFunction(0,16,16,64),function(){
 			if (this.amount>=1) Game.Unlock(['Vanilla nebulae','Wormholes']);if (this.amount>=10) Game.Unlock('Frequent flyer');if (this.amount>=50) Game.Unlock('Warp drive');
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Cosmic Klammas');
 			if (this.amount>=1) Game.Win('Expedition');if (this.amount>=50) Game.Win('Galactic highway');if (this.amount>=100) Game.Win('Far far away');
 		});
+        Game.Objects['Single Service Wagon'].displayName='<span style="font-size:65%;">Single Service Wagon</span>';//shrink the name since it's so large
 		
 		new Game.Object('Alchemy lab','alchemy lab|alchemy labs|transmuted','Turns gold into cookies!','alchemylab','alchemylabIcon','alchemylabBackground',200000,function(){
 			return Game.ComputeCps(400,Game.Has('Antimony')*100,Game.Has('Essence of dough')+Game.Has('True chocolate')+Game.Has('Ambrosia'));
@@ -2204,7 +2205,7 @@ Game.Launch=function()
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Altered Klammas');
 			if (this.amount>=1) Game.Win('A whole new world');if (this.amount>=50) Game.Win('Now you\'re thinking');if (this.amount>=100) Game.Win('Dimensional shift');
 		});
-		new Game.Object('Time machine','time machine|time machines|recovered','Brings cookies from the past, before they were even eaten.','timemachine','timemachineIcon','timemachineBackground',123456789,function(){
+		new Game.Object('Time Family','time machine|time machines|recovered','Brings cookies from the past, before they were even eaten.','timemachine','timemachineIcon','timemachineBackground',123456789,function(){
 			return Game.ComputeCps(98765,Game.Has('Flux capacitors')*9876,Game.Has('Time paradox resolver')+Game.Has('Quantum conundrum')+Game.Has('Causality enforcer'));
 		},Game.NewDrawFunction(0,32,32,64,1),function(){
 			if (this.amount>=1) Game.Unlock(['Flux capacitors','Time paradox resolver']);if (this.amount>=10) Game.Unlock('Quantum conundrum');if (this.amount>=50) Game.Unlock('Causality enforcer');
@@ -2403,9 +2404,9 @@ Game.Launch=function()
 		new Game.Upgrade('Cookie trees','Seaside is <b>twice</b> as efficient.<q>A relative of the breadfruit.</q>',Game.Objects['Seaside'].basePrice*tier3,[2,1]);
 		
 		order=400;
-		new Game.Upgrade('Sturdier conveyor belts','Factories gain <b>+4</b> base CpS.',Game.Objects['Factory'].basePrice*tier1,[4,0]);
-		new Game.Upgrade('Child labor','Factories are <b>twice</b> as efficient.<q>Cheaper, healthier workforce - and so much more receptive to whipping!</q>',Game.Objects['Factory'].basePrice*tier2,[4,0]);
-		new Game.Upgrade('Sweatshop','Factories are <b>twice</b> as efficient.<q>Slackers will be terminated.</q>',Game.Objects['Factory'].basePrice*tier3,[4,1]);
+		new Game.Upgrade('Sturdier conveyor belts','Factories gain <b>+4</b> base CpS.',Game.Objects['SSL'].basePrice*tier1,[4,0]);
+		new Game.Upgrade('Child labor','Factories are <b>twice</b> as efficient.<q>Cheaper, healthier workforce - and so much more receptive to whipping!</q>',Game.Objects['SSL'].basePrice*tier2,[4,0]);
+		new Game.Upgrade('Sweatshop','Factories are <b>twice</b> as efficient.<q>Slackers will be terminated.</q>',Game.Objects['SSL'].basePrice*tier3,[4,1]);
 		
 		order=500;
 		new Game.Upgrade('Sugar gas','Mines gain <b>+10</b> base CpS.<q>A pink, volatile gas, found in the depths of some chocolate caves.</q>',Game.Objects['Mine'].basePrice*tier1,[3,0]);
@@ -2413,9 +2414,9 @@ Game.Launch=function()
 		new Game.Upgrade('Ultradrill','Mines are <b>twice</b> as efficient.',Game.Objects['Mine'].basePrice*tier3,[3,1]);
 		
 		order=600;
-		new Game.Upgrade('Vanilla nebulae','Shipments gain <b>+30</b> base CpS.',Game.Objects['Shipment'].basePrice*tier1,[5,0]);
-		new Game.Upgrade('Wormholes','Shipments are <b>twice</b> as efficient.<q>By using these as shortcuts, your ships can travel much faster.</q>',Game.Objects['Shipment'].basePrice*tier2,[5,0]);
-		new Game.Upgrade('Frequent flyer','Shipments are <b>twice</b> as efficient.<q>Come back soon!</q>',Game.Objects['Shipment'].basePrice*tier3,[5,1]);
+		new Game.Upgrade('Vanilla nebulae','Single Service Wagons gain <b>+30</b> base CpS.',Game.Objects['Single Service Wagon'].basePrice*tier1,[5,0]);
+		new Game.Upgrade('Wormholes','Single Service Wagons are <b>twice</b> as efficient.<q>By using these as shortcuts, your ships can travel much faster.</q>',Game.Objects['Single Service Wagon'].basePrice*tier2,[5,0]);
+		new Game.Upgrade('Frequent flyer','Single Service Wagons are <b>twice</b> as efficient.<q>Come back soon!</q>',Game.Objects['Single Service Wagon'].basePrice*tier3,[5,1]);
 		
 		order=700;
 		new Game.Upgrade('Antimony','Alchemy labs gain <b>+100</b> base CpS.<q>Actually worth a lot of mony.</q>',Game.Objects['Alchemy lab'].basePrice*tier1,[6,0]);
@@ -2428,9 +2429,9 @@ Game.Launch=function()
 		new Game.Upgrade('Soul bond','Portals are <b>twice</b> as efficient.<q>So I just sign up and get more cookies? Sure, whatever!</q>',Game.Objects['Portal'].basePrice*tier3,[7,1]);
 		
 		order=900;
-		new Game.Upgrade('Flux capacitors','Time machines gain <b>+9,876</b> base CpS.<q>Bake to the future.</q>',1234567890,[8,0]);
-		new Game.Upgrade('Time paradox resolver','Time machines are <b>twice</b> as efficient.<q>No more fooling around with your own grandmother!</q>',9876543210,[8,0]);
-		new Game.Upgrade('Quantum conundrum','Time machines are <b>twice</b> as efficient.<q>It\'s full of stars!</q>',98765456789,[8,1]);
+		new Game.Upgrade('Flux capacitors','Time Family gains <b>+9,876</b> base CpS.<q>Bake to the future.</q>',1234567890,[8,0]);
+		new Game.Upgrade('Time paradox resolver','Time Family is <b>twice</b> as efficient.<q>No more fooling around with your own grandmother!</q>',9876543210,[8,0]);
+		new Game.Upgrade('Quantum conundrum','Time Family is <b>twice</b> as efficient.<q>It\'s full of stars!</q>',98765456789,[8,1]);
 		
 		order=20000;
 		new Game.Upgrade('Kitten helpers','You gain <b>more CpS</b> the more milk you have.<q>meow may I help you</q>',9000000,[1,7]);
@@ -2455,12 +2456,12 @@ Game.Launch=function()
 		
 		order=200;new Game.Upgrade('Prune juice','Klammas are <b>twice</b> as efficient.<q>Gets me going.</q>',Game.Objects['Klamma'].basePrice*tier4,[1,2]);
 		order=300;new Game.Upgrade('Genetically-modified cookies','Seaside is <b>twice</b> as efficient.<q>All-natural mutations.</q>',Game.Objects['Seaside'].basePrice*tier4,[2,2]);
-		order=400;new Game.Upgrade('Radium reactors','Factories are <b>twice</b> as efficient.<q>Gives your cookies a healthy glow.</q>',Game.Objects['Factory'].basePrice*tier4,[4,2]);
+		order=400;new Game.Upgrade('Radium reactors','Factories are <b>twice</b> as efficient.<q>Gives your cookies a healthy glow.</q>',Game.Objects['SSL'].basePrice*tier4,[4,2]);
 		order=500;new Game.Upgrade('Ultimadrill','Mines are <b>twice</b> as efficient.<q>Pierce the heavens, etc.</q>',Game.Objects['Mine'].basePrice*tier4,[3,2]);
-		order=600;new Game.Upgrade('Warp drive','Shipments are <b>twice</b> as efficient.',Game.Objects['Shipment'].basePrice*tier4,[5,2]);
+		order=600;new Game.Upgrade('Warp drive','Single Service Wagons are <b>twice</b> as efficient.',Game.Objects['Single Service Wagon'].basePrice*tier4,[5,2]);
 		order=700;new Game.Upgrade('Ambrosia','Alchemy labs are <b>twice</b> as efficient.',Game.Objects['Alchemy lab'].basePrice*tier4,[6,2]);
 		order=800;new Game.Upgrade('Sanity dance','Portals are <b>twice</b> as efficient.<q>We can change if we want to.<br>We can leave our brains behind.</q>',Game.Objects['Portal'].basePrice*tier4,[7,2]);
-		order=900;new Game.Upgrade('Causality enforcer','Time machines are <b>twice</b> as efficient.<q>What happened, happened.</q>',1234567890000,[8,2]);
+		order=900;new Game.Upgrade('Causality enforcer','Time Family is <b>twice</b> as efficient.<q>What happened, happened.</q>',1234567890000,[8,2]);
 		
 		order=5000;
 		new Game.Upgrade('Lucky day','Golden cookies appear <b>twice as often</b> and last <b>twice as long</b>.',777777777,[10,1]);
@@ -2477,12 +2478,12 @@ Game.Launch=function()
 		
 		order=250;
 		new Game.Upgrade('Farmer Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Seaside'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Worker Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Factory'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Worker Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['SSL'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Miner Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Mine'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Cosmic Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Shipment'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Cosmic Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Single Service Wagon'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Transmuted Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Alchemy lab'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Altered Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Portal'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Klammas\' Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Time machine'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Klammas\' Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Time Family'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		
 		order=15000;
 		Game.baseResearchTime=Game.fps*60*30;
@@ -2749,9 +2750,9 @@ Game.Launch=function()
 		new Game.Achievement('Seaside ill','Have <b>100</b> Seasides.',[2,2]);
 		
 		order=1300;
-		new Game.Achievement('Production chain','Have <b>1</b> factory.',[4,0]);
-		new Game.Achievement('Industrial revolution','Have <b>50</b> factories.',[4,1]);
-		new Game.Achievement('Global warming','Have <b>100</b> factories.',[4,2]);
+		new Game.Achievement('Production chain','Have <b>1</b> SSL.',[4,0]);
+		new Game.Achievement('Industrial revolution','Have <b>50</b> SSLs.',[4,1]);
+		new Game.Achievement('Global warming','Have <b>100</b> SSLs.',[4,2]);
 		
 		order=1400;
 		new Game.Achievement('You know the drill','Have <b>1</b> mine.',[3,0]);
@@ -2759,9 +2760,9 @@ Game.Launch=function()
 		new Game.Achievement('Hollow the planet','Have <b>100</b> mines.',[3,2]);
 		
 		order=1500;
-		new Game.Achievement('Expedition','Have <b>1</b> shipment.',[5,0]);
-		new Game.Achievement('Galactic highway','Have <b>50</b> shipments.',[5,1]);
-		new Game.Achievement('Far far away','Have <b>100</b> shipments.',[5,2]);
+		new Game.Achievement('Expedition','Have <b>1</b> Single Service Wagon.',[5,0]);
+		new Game.Achievement('Galactic highway','Have <b>50</b> Single Service Wagons.',[5,1]);
+		new Game.Achievement('Far far away','Have <b>100</b> Single Service Wagons.',[5,2]);
 		
 		order=1600;
 		new Game.Achievement('Transmutation','Have <b>1</b> alchemy lab.',[6,0]);
@@ -2774,14 +2775,14 @@ Game.Launch=function()
 		new Game.Achievement('Dimensional shift','Have <b>100</b> portals.',[7,2]);
 		
 		order=1800;
-		new Game.Achievement('Time warp','Have <b>1</b> time machine.',[8,0]);
-		new Game.Achievement('Alternate timeline','Have <b>50</b> time machines.',[8,1]);
-		new Game.Achievement('Rewriting history','Have <b>100</b> time machines.',[8,2]);
+		new Game.Achievement('Time warp','Have <b>1</b> Time Family.',[8,0]);
+		new Game.Achievement('Alternate timeline','Have <b>50</b> Time Families.',[8,1]);
+		new Game.Achievement('Rewriting history','Have <b>100</b> Time Families.',[8,2]);
 		
 		order=7000;
 		new Game.Achievement('One with everything','Have <b>at least 1</b> of every building.',[4,6],2);
-		new Game.Achievement('Mathematician','Have at least <b>1 time machine, 2 portals, 4 alchemy labs, 8 shipments</b> and so on (128 max).',[7,6],2);
-		new Game.Achievement('Base 10','Have at least <b>10 time machines, 20 portals, 30 alchemy labs, 40 shipments</b> and so on.',[8,6],2);
+		new Game.Achievement('Mathematician','Have at least <b>1 Time Family, 2 portals, 4 alchemy labs, 8 Single Service Wagons</b> and so on (128 max).',[7,6],2);
+		new Game.Achievement('Base 10','Have at least <b>10 Time Families, 20 portals, 30 alchemy labs, 40 Single Service Wagons</b> and so on.',[8,6],2);
 		
 		order=10000;
 		new Game.Achievement('Golden cookie','Click a <b>golden cookie</b>.',[10,1],1);
@@ -3038,7 +3039,7 @@ Game.Launch=function()
 		{
 			//if (Game.Has('Arcane sugar') && !Game.Has('Elder Pact')) Game.Unlock('Elder Pact');//temporary fix for something stupid I've done
 			
-			//if (Game.Objects['Factory'].amount>=50 && Game.Objects['Factory'].specialUnlocked==0) {Game.Objects['Factory'].unlockSpecial();Game.Popup('You have unlocked the factory dungeons!');}
+			//if (Game.Objects['SSL'].amount>=50 && Game.Objects['SSL'].specialUnlocked==0) {Game.Objects['SSL'].unlockSpecial();Game.Popup('You have unlocked the SSL dungeons!');}
 			if (isNaN(Game.cookies)) {Game.cookies=0;Game.cookiesEarned=0;Game.recalculateGains=1;}
 			
 			if (Game.cookiesEarned>=9999999) Game.Unlock(['Oatmeal raisin cookies','Peanut butter cookies','Plain cookies','Sugar cookies']);
