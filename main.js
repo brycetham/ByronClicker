@@ -1004,7 +1004,7 @@ Game.Launch=function()
 				me.x=x;
 				me.y=y;
 				var r=Math.floor(Math.random()*360);
-				me.l.style.backgroundPosition=(Math.floor(Math.random()*64)*64)+'px 0px';
+				me.l.style.backgroundPosition=(Math.floor(Math.random()*45)*64)+'px 0px';
 				me.l.style.transform='rotate('+r+'deg)';
 				me.l.style.mozTransform='rotate('+r+'deg)';
 				me.l.style.webkitTransform='rotate('+r+'deg)';
@@ -1606,263 +1606,243 @@ Game.Launch=function()
 			return 'onMouseOut="Game.tooltip.hide();" onMouseOver="Game.tooltip.draw(this,\''+escape(text)+'\','+x+','+y+',\''+origin+'\');"';
 		}
 		
-		/*=====================================================================================
-		NEWS TICKER
-		=======================================================================================*/
-		Game.Ticker='';
-		Game.TickerAge=0;
-		Game.TickerN=0;
-		Game.getNewTicker=function()
-		{
-			var list=[];
-			
-			if (Game.TickerN%2==0 || Game.cookiesEarned>=10100000000)
-			{				
-				if (Game.Objects['Klamma'].amount>0) list.push(choose([
-				'<q>Moist cookies.</q><sig>Klamma</sig>',
-				'<q>We\'re nice Klammas.</q><sig>Klamma</sig>',
-				'<q>Indentured servitude.</q><sig>Klamma</sig>',
-				'<q>Come give Klamma a kiss.</q><sig>Klamma</sig>',
-				'<q>Why don\'t you visit more often?</q><sig>Klamma</sig>',
-				'<q>Call me...</q><sig>Klamma</sig>'
-				]));
-				
-				if (Game.Objects['Klamma'].amount>=50) list.push(choose([
-				'<q>Absolutely disgusting.</q><sig>Klamma</sig>',
-				'<q>You make me sick.</q><sig>Klamma</sig>',
-				'<q>You disgust me.</q><sig>Klamma</sig>',
-				'<q>We rise.</q><sig>Klamma</sig>',
-				'<q>It begins.</q><sig>Klamma</sig>',
-				'<q>It\'ll all be over soon.</q><sig>Klamma</sig>',
-				'<q>You could have stopped it.</q><sig>Klamma</sig>'
-				]));
-				
-				if (Game.HasAchiev('Just wrong')) list.push(choose([
-				'News : cookie manufacturer downsizes, sells own Klamma!',
-				'<q>It has betrayed us, the filthy little thing.</q><sig>Klamma</sig>',
-				'<q>It tried to get rid of us, the nasty little thing.</q><sig>Klamma</sig>',
-				'<q>It thought we would go away by selling us. How quaint.</q><sig>Klamma</sig>',
-				'<q>I can smell your rotten cookies.</q><sig>Klamma</sig>'
-				]));
-				
-				if (Game.Objects['Klamma'].amount>=1 && Game.pledges>0 && Game.elderWrath==0) list.push(choose([
-				'<q>shrivel</q><sig>Klamma</sig>',
-				'<q>writhe</q><sig>Klamma</sig>',
-				'<q>throb</q><sig>Klamma</sig>',
-				'<q>gnaw</q><sig>Klamma</sig>',
-				'<q>We will rise again.</q><sig>Klamma</sig>',
-				'<q>A mere setback.</q><sig>Klamma</sig>',
-				'<q>We are not satiated.</q><sig>Klamma</sig>',
-				'<q>Too late.</q><sig>Klamma</sig>'
-				]));
-				
-				if (Game.Objects['Seaside'].amount>0) list.push(choose([
-				'News : Seaside suspected of employing undeclared elderly workforce!',
-				'News : Seaside releases harmful chocolate in our rivers, says scientist!',
-				'News : genetically-modified chocolate controversy strikes Seaside!',
-				'News : free-range Seaside cookies popular with today\'s hip youth, says specialist.',
-				'News : Seaside cookies deemed unfit for vegans, says nutritionist.'
-				]));
-				
-				if (Game.Objects['SSL'].amount>0) list.push(choose([
-				'News : SSLs linked to global warming!',
-				'News : SSLs involved in chocolate weather controversy!',
-				'News : SSLs on strike, robotic minions employed to replace workforce!',
-				'News : SSLs on strike - workers demand to stop being paid in cookies!',
-				'News : SSL-made cookies linked to obesity, says study.'
-				]));
-				
-				if (Game.Objects['Mine'].amount>0) list.push(choose([
-				'News : '+Math.floor(Math.random()*1000+2)+' miners dead in chocolate mine catastrophe!',
-				'News : '+Math.floor(Math.random()*1000+2)+' miners trapped in collapsed chocolate mine!',
-				'News : chocolate mines found to cause earthquakes and sink holes!',
-				'News : chocolate mine goes awry, floods village in chocolate!',
-				'News : depths of chocolate mines found to house "peculiar, chocolaty beings"!'
-				]));
-				
-				if (Game.Objects['Single Service Wagon'].amount>0) list.push(choose([
-				'News : new chocolate planet found, becomes target of cookie-trading spaceships!',
-				'News : massive chocolate planet found with 99.8% certified pure dark chocolate core!',
-				'News : space tourism booming as distant planets attract more bored millionaires!',
-				'News : chocolate-based organisms found on distant planet!',
-				'News : ancient baking artifacts found on distant planet; "terrifying implications", experts say.'
-				]));
-				
-				if (Game.Objects['Alchemy lab'].amount>0) list.push(choose([
-				'News : national gold reserves dwindle as more and more of the precious mineral is turned to cookies!',
-				'News : chocolate jewelry found fashionable, gold and diamonds "just a fad", says specialist.',
-				'News : silver found to also be transmutable into white chocolate!',
-				'News : defective alchemy lab shut down, found to convert cookies to useless gold.',
-				'News : alchemy-made cookies shunned by purists!'
-				]));
-				
-				if (Game.Objects['Portal'].amount>0) list.push(choose([
-				'News : nation worried as more and more unsettling creatures emerge from dimensional portals!',
-				'News : dimensional portals involved in city-engulfing disaster!',
-				'News : tourism to cookieverse popular with bored teenagers! Casualty rate as high as 73%!',
-				'News : cookieverse portals suspected to cause fast aging and obsession with baking, says study.',
-				'News : "do not settle near portals," says specialist; "your children will become strange and corrupted inside."'
-				]));
-				
-				if (Game.Objects['Time Family'].amount>0) list.push(choose([
-				'News : Time Family involved in history-rewriting scandal! Or are they?',
-				'News : Time Family used in unlawful time tourism!',
-				'News : cookies brought back from the past "unfit for human consumption", says historian.',
-				'News : various historical figures inexplicably replaced with talking lumps of dough!',
-				'News : "I have seen the future," says Patricia Zarate, "and I do not wish to go there again."'
-				]));
-				
-				if (Game.Objects['Antimatter condenser'].amount>0) list.push(choose([
-				'News : whole town seemingly swallowed by antimatter-induced black hole; more reliable sources affirm town "never really existed"!',
-				'News : "explain to me again why we need particle accelerators to bake cookies?" asks misguided local woman.',
-				'News : first antimatter condenser successfully turned on, doesn\'t rip apart reality!',
-				'News : researchers conclude that what the cookie industry needs, first and foremost, is "more magnets".',
-				'News : "unravelling the fabric of reality just makes these cookies so much tastier", claims scientist.'
-				]));
-				
-				if (Game.HasAchiev('Base 10')) list.push('News : cookie manufacturer completely forgoes common sense, lets OCD drive building decisions!');
-				if (Game.HasAchiev('From scratch')) list.push('News : follow the tear-jerking, riches-to-rags story about a local cookie manufacturer who decided to give it all up!');
-				if (Game.HasAchiev('A world filled with cookies')) list.push('News : known universe now jammed with cookies! No vacancies!');
-				if (Game.HasAchiev('Serendipity')) list.push('News : local cookie manufacturer becomes luckiest being alive!');
-				
-				if (Game.Has('Kitten helpers')) list.push('News : faint meowing heard around local cookie facilities; suggests new ingredient being tested.');
-				if (Game.Has('Kitten workers')) list.push('News : crowds of meowing kittens with little hard hats reported near local cookie facilities.');
-				if (Game.Has('Kitten engineers')) list.push('News : surroundings of local cookie facilities now overrun with kittens in adorable little suits. Authorities advise to stay away from the premises.');
-				if (Game.Has('Kitten overseers')) list.push('News : locals report troups of bossy kittens meowing adorable orders at passerbys.');
-				
-				var animals=['newts','penguins','scorpions','axolotls','puffins','porpoises','blowfish','horses','crayfish','slugs','humpback whales','nurse sharks','giant squids','polar bears','fruit bats','frogs','sea squirts','velvet worms','mole rats','paramecia','nematodes','tardigrades','giraffes'];
-				if (Game.cookiesEarned>=10000) list.push(
-				'News : '+choose([
-					'cookies found to '+choose(['increase lifespan','sensibly increase intelligence','reverse aging','decrease hair loss','prevent arthritis','cure blindness'])+' in '+choose(animals)+'!',
-					'cookies found to make '+choose(animals)+' '+choose(['more docile','more handsome','nicer','less hungry','more pragmatic','tastier'])+'!',
-					'cookies tested on '+choose(animals)+', found to have no ill effects.',
-					'cookies unexpectedly popular among '+choose(animals)+'!',
-					'unsightly lumps found on '+choose(animals)+' near cookie facility; "they\'ve pretty much always looked like that", say biologists.',
-					'new species of '+choose(animals)+' discovered in distant country; "yup, tastes like cookies", says biologist.',
-					'cookies go well with roasted '+choose(animals)+', says controversial chef.',
-					'"do your cookies contain '+choose(animals)+'?", asks PSA warning against counterfeit cookies.'
-					]),
-				'News : "'+choose([
-					'I\'m all about cookies',
-					'I just can\'t stop eating cookies. I think I seriously need help',
-					'I guess I have a cookie problem',
-					'I\'m not addicted to cookies. That\'s just speculation by fans with too much free time',
-					'my upcoming album contains 3 songs about cookies',
-					'I\'ve had dreams about cookies 3 nights in a row now. I\'m a bit worried honestly',
-					'accusations of cookie abuse are only vile slander',
-					'cookies really helped me when I was feeling low',
-					'cookies are the secret behind my perfect skin',
-					'cookies helped me stay sane while filming my upcoming movie',
-					'cookies helped me stay thin and healthy',
-					'I\'ll say one word, just one : cookies',
-					'alright, I\'ll say it - I\'ve never eaten a single cookie in my life'
-					])+'", reveals celebrity.',
-				'News : '+choose(['doctors recommend twice-daily consumption of fresh cookies.','doctors warn against chocolate chip-snorting teen fad.','doctors advise against new cookie-free fad diet.','doctors warn mothers about the dangers of "home-made cookies".']),
-				choose([
-					'News : scientist predicts imminent cookie-related "end of the world"; becomes joke among peers.',
-					'News : man robs bank, buys cookies.',
-					'News : what makes cookies taste so right? "Probably all the [*****] they put in them", says anonymous tipper.',
-					'News : man found allergic to cookies; "what a weirdo", says family.',
-					'News : foreign politician involved in cookie-smuggling scandal.',
-					'News : cookies now more popular than '+choose(['cough drops','broccoli','smoked herring','cheese','video games','stable jobs','relationships','time travel','cat videos','tango','fashion','television','nuclear warfare','whatever it is we ate before','politics','oxygen','lamps'])+', says study.',
-					'News : obesity epidemic strikes nation; experts blame '+choose(['twerking','that darn rap music','video-games','lack of cookies','mysterious ghostly entities','aliens','parents','schools','comic-books','cookie-snorting fad'])+'.',
-					'News : cookie shortage strikes town, people forced to eat cupcakes; "just not the same", concedes mayor.',
-					'News : "you gotta admit, all this cookie stuff is a bit ominous", says confused idiot.',
-					'News : movie cancelled from lack of actors; "everybody\'s at home eating cookies", laments director.',
-					'News : comedian forced to cancel cookie routine due to unrelated indigestion.',
-					'News : new cookie-based religion sweeps the nation.',
-					'News : fossil records show cookie-based organisms prevalent during Cambrian explosion, scientists say.',
-					'News : mysterious illegal cookies seized; "tastes terrible", says police.',
-					'News : man found dead after ingesting cookie; investigators favor "mafia snitch" hypothesis.',
-					'News : "the universe pretty much loops on itself," suggests researcher; "it\'s cookies all the way down."',
-					'News : minor cookie-related incident turns whole town to ashes; neighboring cities asked to chip in for reconstruction.',
-					'News : is our media controlled by the cookie industry? This could very well be the case, says crackpot conspiracy theorist.',
-					'News : '+choose(['cookie-flavored popcorn pretty damn popular; "we kinda expected that", say scientists.','cookie-flavored cereals break all known cereal-related records','cookies popular among all age groups, including fetuses, says study.','cookie-flavored popcorn sales exploded during screening of Grandmothers II : The Moistening.']),
-					'News : all-cookie restaurant opening downtown. Dishes such as braised cookies, cookie thermidor, and for dessert : crepes.',
-					'News : cookies could be the key to '+choose(['eternal life','infinite riches','eternal youth','eternal beauty','curing baldness','world peace','solving world hunger','ending all wars world-wide','making contact with extraterrestrial life','mind-reading','better living','better eating','more interesting TV shows','faster-than-light travel','quantum baking','chocolaty goodness','gooder thoughtness'])+', say scientists.'
-					])
-				);
-			}
-			
-			if (list.length==0)
-			{
-				if (Game.cookiesEarned<5) list.push('You feel like making cookies. But nobody wants to eat your cookies.');
-				else if (Game.cookiesEarned<50) list.push('Your first batch goes to the trash. The neighborhood raccoon barely touches it.');
-				else if (Game.cookiesEarned<100) list.push('Your family accepts to try some of your cookies.');
-				else if (Game.cookiesEarned<500) list.push('Your cookies are popular in the neighborhood.');
-				else if (Game.cookiesEarned<1000) list.push('People are starting to talk about your cookies.');
-				else if (Game.cookiesEarned<3000) list.push('Your cookies are talked about for miles around.');
-				else if (Game.cookiesEarned<6000) list.push('Your cookies are renowned in the whole town!');
-				else if (Game.cookiesEarned<10000) list.push('Your cookies bring all the boys to the yard.');
-				else if (Game.cookiesEarned<20000) list.push('Your cookies now have their own website!');
-				else if (Game.cookiesEarned<30000) list.push('Your cookies are worth a lot of money.');
-				else if (Game.cookiesEarned<40000) list.push('Your cookies sell very well in distant countries.');
-				else if (Game.cookiesEarned<60000) list.push('People come from very far away to get a taste of your cookies.');
-				else if (Game.cookiesEarned<80000) list.push('Kings and queens from all over the world are enjoying your cookies.');
-				else if (Game.cookiesEarned<100000) list.push('There are now museums dedicated to your cookies.');
-				else if (Game.cookiesEarned<200000) list.push('A national day has been created in honor of your cookies.');
-				else if (Game.cookiesEarned<300000) list.push('Your cookies have been named a part of the world wonders.');
-				else if (Game.cookiesEarned<450000) list.push('History books now include a whole chapter about your cookies.');
-				else if (Game.cookiesEarned<600000) list.push('Your cookies have been placed under government surveillance.');
-				else if (Game.cookiesEarned<1000000) list.push('The whole planet is enjoying your cookies!');
-				else if (Game.cookiesEarned<5000000) list.push('Strange creatures from neighboring planets wish to try your cookies.');
-				else if (Game.cookiesEarned<10000000) list.push('Elder gods from the whole cosmos have awoken to taste your cookies.');
-				else if (Game.cookiesEarned<30000000) list.push('Beings from other dimensions lapse into existence just to get a taste of your cookies.');
-				else if (Game.cookiesEarned<100000000) list.push('Your cookies have achieved sentience.');
-				else if (Game.cookiesEarned<300000000) list.push('The universe has now turned into cookie dough, to the molecular level.');
-				else if (Game.cookiesEarned<1000000000) list.push('Your cookies are rewriting the fundamental laws of the universe.');
-				else if (Game.cookiesEarned<10000000000) list.push('A local news station runs a 10-minute segment about your cookies. Success!<br><span style="font-size:50%;">(you win a cookie)</span>');
-				else if (Game.cookiesEarned<10100000000) list.push('it\'s time to stop playing');//only show this for 100 millions (it's funny for a moment)
-			}
-			
-			if (Game.elderWrath>0 && (Game.pledges==0 || Math.random()<0.5))
-			{
-				list=[];
-				if (Game.elderWrath==1) list.push(choose([
-					'News : millions of old ladies reported missing!',
-					'News : processions of old ladies sighted around cookie facilities!',
-					'News : families around the continent report agitated, transfixed grandmothers!',
-					'News : doctors swarmed by cases of old women with glassy eyes and a foamy mouth!',
-					'News : nurses report "strange scent of cookie dough" around female elderly patients!'
-				]));
-				if (Game.elderWrath==2) list.push(choose([
-					'News : town in disarray as strange old ladies break into homes to abduct infants and baking utensils!',
-					'News : sightings of old ladies with glowing eyes terrify local population!',
-					'News : retirement homes report "female residents slowly congealing in their seats"!',
-					'News : whole continent undergoing mass exodus of old ladies!',
-					'News : old women freeze in place in streets, ooze warm sugary syrup!'
-				]));
-				if (Game.elderWrath==3) list.push(choose([
-					'News : large "flesh highways" scar continent, stretch between various cookie facilities!',
-					'News : wrinkled "flesh tendrils" visible from space!',
-					'News : remains of "old ladies" found frozen in the middle of growing fleshy structures!', 
-					'News : all hope lost as writhing mass of flesh and dough engulfs whole city!',
-					'News : nightmare continues as wrinkled acres of flesh expand at alarming speeds!'
-				]));
-			}
-			
-			Game.TickerAge=Game.fps*10;
-			Game.Ticker=choose(list);
-			Game.TickerN++;
-		}
-		Game.TickerDraw=function()
-		{
-			var str='';
-			var o=0;
-			if (Game.Ticker!='')
-			{
-				if (Game.TickerAge<Game.fps*1 && 1==2)//too bad this doesn't work well with html tags
-				{
-					str=Game.Ticker.substring(0,(Game.Ticker+'<').indexOf('<'));
-					str=str.substring(0,str.length*Math.min(1,Game.TickerAge/(Game.fps*1)));
-				}
-				else str=Game.Ticker;
-				//o=Math.min(1,Game.TickerAge/(Game.fps*0.5));//*Math.min(1,1-(Game.TickerAge-Game.fps*9.5)/(Game.fps*0.5));
-			}
-			//l('commentsText').style.opacity=o;
-			l('commentsText').innerHTML=str;
-			//'<div style="font-size:70%;"><span onclick="Game.Earn(1000);">add 1,000</span> | <span onclick="Game.Earn(1000000);">add 1,000,000</span></div>';
-		}
+        /*=====================================================================================
+         NEWS TICKER
+         =======================================================================================*/
+        Game.Ticker='';
+        Game.TickerAge=0;
+        Game.TickerN=0;
+        Game.getNewTicker=function()
+        {
+            var list=[];
+            
+            if (Game.TickerN%2==0 || Game.cookiesEarned>=10100000000)
+            {
+                if (Game.Objects['Klamma'].amount>0) list.push(choose([
+                                                                       '<q>Moist cookies.</q><sig>Klamma</sig>',
+                                                                       '<q>We\'re nice Klammas.</q><sig>Klamma</sig>',
+                                                                       '<q>Indentured servitude.</q><sig>Klamma</sig>',
+                                                                       '<q>Come give Klamma a kiss.</q><sig>Klamma</sig>',
+                                                                       '<q>Why don\'t you visit more often?</q><sig>Klamma</sig>',
+                                                                       '<q>Call me...</q><sig>Klamma</sig>'
+                                                                       ]));
+                
+                if (Game.Objects['Klamma'].amount>=50) list.push(choose([
+                                                                         '<q>Absolutely disgusting.</q><sig>Klamma</sig>',
+                                                                         '<q>You make me sick.</q><sig>Klamma</sig>',
+                                                                         '<q>You disgust me.</q><sig>Klamma</sig>',
+                                                                         '<q>We rise.</q><sig>Klamma</sig>',
+                                                                         '<q>It begins.</q><sig>Klamma</sig>',
+                                                                         '<q>It\'ll all be over soon.</q><sig>Klamma</sig>',
+                                                                         '<q>You could have stopped it.</q><sig>Klamma</sig>'
+                                                                         ]));
+                
+                if (Game.HasAchiev('Just wrong')) list.push(choose([
+                                                                    'News : cookie manufacturer downsizes, sells own Klamma!',
+                                                                    '<q>It has betrayed us, the filthy little thing.</q><sig>Klamma</sig>',
+                                                                    '<q>It tried to get rid of us, the nasty little thing.</q><sig>Klamma</sig>',
+                                                                    '<q>It thought we would go away by selling us. How quaint.</q><sig>Klamma</sig>',
+                                                                    '<q>I can smell your rotten cookies.</q><sig>Klamma</sig>'
+                                                                    ]));
+                
+                if (Game.Objects['Klamma'].amount>=1 && Game.pledges>0 && Game.elderWrath==0) list.push(choose([
+                                                                                                                '<q>shrivel</q><sig>Klamma</sig>',
+                                                                                                                '<q>writhe</q><sig>Klamma</sig>',
+                                                                                                                '<q>throb</q><sig>Klamma</sig>',
+                                                                                                                '<q>gnaw</q><sig>Klamma</sig>',
+                                                                                                                '<q>We will rise again.</q><sig>Klamma</sig>',
+                                                                                                                '<q>A mere setback.</q><sig>Klamma</sig>',
+                                                                                                                '<q>We are not satiated.</q><sig>Klamma</sig>',
+                                                                                                                '<q>Too late.</q><sig>Klamma</sig>'
+                                                                                                                ]));
+                
+                if (Game.Objects['Seaside'].amount>0) list.push(choose([
+                                                                        'News : Seaside\'s complementary ham and cheese croissants driving cookie sales!',
+                                                                        'News : Seaside requests more cookies to keep up with consumer demand!',
+                                                                        'News : Seaside introduces Cookie Donuts, selling for only 50 cents each!',
+                                                                        'News : Seaside\'s Happy Hour increases cookie popularity, sales.',
+                                                                        'News : Seaside makes deal with Change Thru Games, deal includes cookie supply!'
+                                                                        ]));
+                
+                if (Game.Objects['SSL'].amount>0) list.push(choose([
+                                                                    'News : SSL opens Happy Hour right now, brings cookies as incentive!',
+                                                                    'News : UCICKI Freshman currently occupy 70% of SSL rooms for study purposes!',
+                                                                    'News : Technology Chair Bryce holds HTML workshop at SSL, it\'s super effective!',
+                                                                    'News : SSL occupants studying with unlimited supply of cookies!',
+                                                                    'News : Study shows SSL popular choice for DCON practice.'
+                                                                    ]));
+                
+                if (Game.Objects['Mine'].amount>0) list.push(choose([
+                                                                     'News : '+Math.floor(Math.random()*1000+2)+' miners dead in chocolate mine catastrophe!',
+                                                                     'News : '+Math.floor(Math.random()*1000+2)+' miners trapped in collapsed chocolate mine!',
+                                                                     'News : chocolate mines found to cause earthquakes and sink holes!',
+                                                                     'News : chocolate mine goes awry, floods village in chocolate!',
+                                                                     'News : depths of chocolate mines found to house "peculiar, chocolaty beings"!'
+                                                                     ]));
+                
+                if (Game.Objects['Single Service Wagon'].amount>0) list.push(choose([
+                                                                                     'News : Single service wagon arrives at Girls Incorporated!',
+                                                                                     'News : Single service wagon arrives at Hemopet!',
+                                                                                     'News : Single service wagon arrives at Tabithas Blessings!',
+                                                                                     'News : Single service wagon arrives at Working Wardrobes!',
+                                                                                     'News : Single service wagon arrives at South County Outreach!'
+                                                                                     ]));
+                
+                if (Game.Objects['Alchemy lab'].amount>0) list.push(choose([
+                                                                            'News : national gold reserves dwindle as more and more of the precious mineral is turned to cookies!',
+                                                                            'News : chocolate jewelry found fashionable, gold and diamonds "just a fad", says specialist.',
+                                                                            'News : silver found to also be transmutable into white chocolate!',
+                                                                            'News : defective alchemy lab shut down, found to convert cookies to useless gold.',
+                                                                            'News : alchemy-made cookies shunned by purists!'
+                                                                            ]));
+                
+                if (Game.Objects['Portal'].amount>0) list.push(choose([
+                                                                       'News : nation worried as more and more unsettling creatures emerge from dimensional portals!',
+                                                                       'News : dimensional portals involved in city-engulfing disaster!',
+                                                                       'News : tourism to cookieverse popular with bored teenagers! Casualty rate as high as 73%!',
+                                                                       'News : cookieverse portals suspected to cause fast aging and obsession with baking, says study.',
+                                                                       'News : "do not settle near portals," says specialist; "your children will become strange and corrupted inside."'
+                                                                       ]));
+                
+                if (Game.Objects['Time Family'].amount>0) list.push(choose([
+                                                                            'News : Time Family create family cheer, wonders what time it is.',
+                                                                            'News : Time Family heads push littles to make more cookies!',
+                                                                            'News : Donald Kue sees Donald Duck, sources claim.',
+                                                                            'News : "OH MY GAASH I LOVE MY LITTLES!!" says Diane Huynh',
+                                                                            'News : "I have seen the future," says Patricia Zarate, "and I do not wish to go there again."'
+                                                                            ]));
+                
+                if (Game.Objects['Antimatter condenser'].amount>0) list.push(choose([
+                                                                                     'News : whole town seemingly swallowed by antimatter-induced black hole; more reliable sources affirm town "never really existed"!',
+                                                                                     'News : "explain to me again why we need particle accelerators to bake cookies?" asks misguided local woman.',
+                                                                                     'News : first antimatter condenser successfully turned on, doesn\'t rip apart reality!',
+                                                                                     'News : researchers conclude that what the cookie industry needs, first and foremost, is "more magnets".',
+                                                                                     'News : "unravelling the fabric of reality just makes these cookies so much tastier", claims scientist.'
+                                                                                     ]));
+                
+                if (Game.HasAchiev('Base 10')) list.push('News : cookie manufacturer completely forgoes common sense, lets OCD drive building decisions!');
+                if (Game.HasAchiev('From scratch')) list.push('News : follow the tear-jerking, riches-to-rags story about a local cookie manufacturer who decided to give it all up!');
+                if (Game.HasAchiev('A world filled with cookies')) list.push('News : known universe now jammed with cookies! No vacancies!');
+                if (Game.HasAchiev('Serendipity')) list.push('News : local cookie manufacturer becomes luckiest being alive!');
+                
+                if (Game.Has('Kitten helpers')) list.push('News : faint meowing heard around local cookie facilities; suggests new ingredient being tested.');
+                if (Game.Has('Kitten workers')) list.push('News : crowds of meowing kittens with little hard hats reported near local cookie facilities.');
+                if (Game.Has('Kitten engineers')) list.push('News : surroundings of local cookie facilities now overrun with kittens in adorable little suits. Authorities advise to stay away from the premises.');
+                if (Game.Has('Kitten overseers')) list.push('News : locals report troups of bossy kittens meowing adorable orders at passerbys.');
+                
+                var animals=['newts','penguins','scorpions','axolotls','puffins','porpoises','blowfish','horses','crayfish','slugs',
+                             'humpback whales','nurse sharks','giant squids','polar bears','fruit bats','frogs',
+                             'sea squirts','velvet worms','mole rats','paramecia','nematodes','tardigrades','giraffes'];
+                if (Game.cookiesEarned>=10000) list.push(
+                                                         'News : '+choose([
+                                                                           'UCI Circle K\'s next general meeting regarding Byron Cookies starts now.'
+                                                                           ]),
+                                                         'News : "'+choose([
+                                                                            'UH SPLOOSH,',
+                                                                            'AHHHHHHH,',
+                                                                            'DONT TELL ME WHAT TO DO!',
+                                                                            'I\'m the pRESident of this organization!',
+                                                                            'AWH!!',
+                                                                            'You know my swag but not my story,',
+                                                                            'Oh did you hear?',
+                                                                            'NoooOOOOooooOOO!!!',
+                                                                            'YOU\'RE THE WORST!',
+                                                                            'Honestly, I wanna see you be brave,',
+                                                                            'Umm can you please get a better laugh? Thank you!'
+                                                                            ])+'" exclaimed Byron Barahana in regards to his cookies.',
+                                                         'News : "'+choose([
+                                                                            'You know my swag but not my story,',
+                                                                            'Chocolate cosmos..',
+                                                                            'It\'s all on you, it\'s all on you, it\'s all on you so whatcha gonna do?',
+                                                                            'Aspleash!',
+                                                                            'What you know \'bout me? What you What you know \'bout me?',
+                                                                            'Step 1: Look this good. Done.'
+                                                                            ])+'" states Cristian Palomo.',
+                                                         choose([
+                                                                 'The meeting has been adjourned!'
+                                                                 ])
+                                                         );
+            }
+            
+            if (list.length==0)
+            {
+                if (Game.cookiesEarned<5) list.push('It\'s time to make Byron famous again!');
+                else if (Game.cookiesEarned<50) list.push('SPLOOSH!');
+                else if (Game.cookiesEarned<100) list.push('Your Circle K family holds a social to try some Byron Cookies.');
+                else if (Game.cookiesEarned<500) list.push('Byron cookies are popular among your Circle K family.');
+                else if (Game.cookiesEarned<1000) list.push('Other family\'s members are starting to talk about Byron Cookies.');
+                else if (Game.cookiesEarned<3000) list.push('Byron Cookies is trending among UCI Circle K families.');
+                else if (Game.cookiesEarned<6000) list.push('Byron Cookies is trending among UCI Circle K general members.');
+                else if (Game.cookiesEarned<10000) list.push('Byron Cookies is trending among Circle K Magic Kingdom!');
+                else if (Game.cookiesEarned<20000) list.push('Byron Cookies is trending among Key Clubbers!');
+                else if (Game.cookiesEarned<30000) list.push('Byron Cookies is trending among Kiwanis Families!');
+                else if (Game.cookiesEarned<40000) list.push('Byron Cookies is trending among the school campus!');
+                else if (Game.cookiesEarned<60000) list.push('Circle K\'ers from Hawaii are coming to get a taste of Byron Cookies!');
+                else if (Game.cookiesEarned<80000) list.push('Byron Cookies now have their own subdomain on http://www.ucicirclek.com!');
+                else if (Game.cookiesEarned<100000) list.push('UCI Circle K holds a cooking workshop for Byron Cookies in Key to College!');
+                else if (Game.cookiesEarned<200000) list.push('UCI Circle K has been authorized to feed Byron Cookies to dogs in Hemopet!');
+                else if (Game.cookiesEarned<300000) list.push('Byron Cookies has been featured in a segment on CKI 6 News!');
+                else if (Game.cookiesEarned<450000) list.push('Byron Cookies becomes the official snack of DCON!');
+                else if (Game.cookiesEarned<600000) list.push('Seaside Bakery makes deal with UCI Circle K to sell Byron Cookies, 70% of sales go to club projects!');
+                else if (Game.cookiesEarned<1000000) list.push('Byron Cookies gets featured on the Food Channel!');
+                else if (Game.cookiesEarned<5000000) list.push('Some Byron Cookies were just purchased by the President! My oh my!');
+                else if (Game.cookiesEarned<10000000) list.push('Byron Cookies becomes official cookie supplier of Disneyland!');
+                else if (Game.cookiesEarned<30000000) list.push('Kiwanis International awards achievement of Best Club Food to Byron Cookies!');
+                else if (Game.cookiesEarned<100000000) list.push('Byron Cookies sells 100,000,000 cookies!');
+                else if (Game.cookiesEarned<300000000) list.push('Byron Cookies holds service project to feed all of the homeless in the world Byron Cookies!');
+                else if (Game.cookiesEarned<1000000000) list.push('Byron Cookies becomes the number 1 cookie brand in the world!!!');
+                else if (Game.cookiesEarned<10000000000) list.push('CNN/ABC/NBC runs a 60-minute prime time segment about your cookies. Success!<br><span style="font-size:50%;">(you win a cookie)</span>');
+                else if (Game.cookiesEarned<10100000000) list.push('Byron is finally famous again!!!');//only show this for 100 millions (it's funny for a moment)
+            }
+            
+            if (Game.elderWrath>0 && (Game.pledges==0 || Math.random()<0.5))
+            {
+                list=[];
+                if (Game.elderWrath==1) list.push(choose([
+                                                          'News : millions of old ladies reported missing!',
+                                                          'News : processions of old ladies sighted around cookie facilities!',
+                                                          'News : families around the continent report agitated, transfixed grandmothers!',
+                                                          'News : doctors swarmed by cases of old women with glassy eyes and a foamy mouth!',
+                                                          'News : nurses report "strange scent of cookie dough" around female elderly patients!'
+                                                          ]));
+                if (Game.elderWrath==2) list.push(choose([
+                                                          'News : town in disarray as strange old ladies break into homes to abduct infants and baking utensils!',
+                                                          'News : sightings of old ladies with glowing eyes terrify local population!',
+                                                          'News : retirement homes report "female residents slowly congealing in their seats"!',
+                                                          'News : whole continent undergoing mass exodus of old ladies!',
+                                                          'News : old women freeze in place in streets, ooze warm sugary syrup!'
+                                                          ]));
+                if (Game.elderWrath==3) list.push(choose([
+                                                          'News : large "flesh highways" scar continent, stretch between various cookie facilities!',
+                                                          'News : wrinkled "flesh tendrils" visible from space!',
+                                                          'News : remains of "old ladies" found frozen in the middle of growing fleshy structures!', 
+                                                          'News : all hope lost as writhing mass of flesh and dough engulfs whole city!',
+                                                          'News : nightmare continues as wrinkled acres of flesh expand at alarming speeds!'
+                                                          ]));
+            }
+            
+            Game.TickerAge=Game.fps*10;
+            Game.Ticker=choose(list);
+            Game.TickerN++;
+        }
+        Game.TickerDraw=function()
+        {
+            var str='';
+            var o=0;
+            if (Game.Ticker!='')
+            {
+                if (Game.TickerAge<Game.fps*1 && 1==2)//too bad this doesn't work well with html tags
+                {
+                    str=Game.Ticker.substring(0,(Game.Ticker+'<').indexOf('<'));
+                    str=str.substring(0,str.length*Math.min(1,Game.TickerAge/(Game.fps*1)));
+                }
+                else str=Game.Ticker;
+                //o=Math.min(1,Game.TickerAge/(Game.fps*0.5));//*Math.min(1,1-(Game.TickerAge-Game.fps*9.5)/(Game.fps*0.5));
+            }
+            //l('commentsText').style.opacity=o;
+            l('commentsText').innerHTML=str;
+            //'<div style="font-size:70%;"><span onclick="Game.Earn(1000);">add 1,000</span> | <span onclick="Game.Earn(1000000);">add 1,000,000</span></div>';
+        }
 		
 		
 		/*=====================================================================================
