@@ -31,7 +31,7 @@ var LaunchDungeons=function()
 		return str;
 	};
 	
-	new Game.DungeonType('Mine').
+	new Game.DungeonType('Tabling').
 	nameGenerator=function(){
 		var str='';
 		str+=Game.GetWord(choose(['secret','ruined','magical']))+' '+choose(['chocolate','chocolate','chocolate','white chocolate','sugar','cacao'])+' '+choose(['mine','mines','pit','pits','quarry','excavation','tunnel','shaft','lode','trench','mountain','vein','cliff','peak','dome','crater','abyss','chasm','hole','burrow']);
