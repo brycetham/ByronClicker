@@ -38,7 +38,7 @@ var LaunchDungeons=function()
 		return str;
 	};
 	
-	new Game.DungeonType('Portal').
+	new Game.DungeonType('Green Thrones').
 	nameGenerator=function(){
 		var str='';
 		str+=Game.GetWord(choose(['secret','ruined','magical']))+' '+choose(['portal','gate','dimension','warpgate','door']);

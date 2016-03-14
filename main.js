@@ -620,10 +620,10 @@ Game.Launch=function()
 				if (!bypass)
 				{
 					var prestige=0;
-					if (Game.prestige.ready) prestige=Game.prestige['Heavenly chips'];
+					if (Game.prestige.ready) prestige=Game.prestige['Heavenly Chips'];
 					Game.prestige=[];
 					Game.CalculatePrestige();
-					prestige=Game.prestige['Heavenly chips']-prestige;
+					prestige=Game.prestige['Heavenly Chips']-prestige;
 					if (prestige!=0) Game.Popup('You earn '+prestige+' heavenly chip'+(prestige==1?'':'s')+'!');
 				}
 			}
@@ -666,12 +666,12 @@ Game.Launch=function()
 		Game.mouseCps=function()
 		{
 			var add=0;
-			if (Game.Has('Thousand fingers')) add+=0.1;
-			if (Game.Has('Million fingers')) add+=0.5;
-			if (Game.Has('Billion fingers')) add+=2;
-			if (Game.Has('Trillion fingers')) add+=10;
-			if (Game.Has('Quadrillion fingers')) add+=20;
-			if (Game.Has('Quintillion fingers')) add+=100;
+			if (Game.Has('Thousand gavels')) add+=0.1;
+			if (Game.Has('Million gavels')) add+=0.5;
+			if (Game.Has('Billion gavels')) add+=2;
+			if (Game.Has('Trillion gavels')) add+=10;
+			if (Game.Has('Quadrillion gavels')) add+=20;
+			if (Game.Has('Quintillion gavels')) add+=100;
 			var num=0;
 			for (var i in Game.Objects) {if (Game.Objects[i].name!='Gavel') num+=Game.Objects[i].amount;}
 			add=add*num;
@@ -681,7 +681,7 @@ Game.Launch=function()
 			if (Game.Has('Adamantium mouse')) add+=Game.cookiesPs*0.01;
 			var mult=1;
 			if (Game.clickFrenzy>0) mult*=777;
-			return mult*Game.ComputeCps(1,Game.Has('Reinforced index finger'),Game.Has('Carpal tunnel prevention cream')+Game.Has('Ambidextrous'),add);
+			return mult*Game.ComputeCps(1,Game.Has('Reinforced Gavel'),Game.Has('Dare Prevention Gavel')+Game.Has('Dual gavels'),add);
 		}
 		Game.computedMouseCps=1;
 		Game.globalCpsMult=1;
@@ -720,7 +720,7 @@ Game.Launch=function()
 		{
 			var prestige=Game.HowMuchPrestige(Game.cookiesReset);
 			Game.prestige=[];
-			Game.prestige['Heavenly chips']=prestige;
+			Game.prestige['Heavenly Chips']=prestige;
 			Game.prestige.ready=1;
 		}
 		/*=====================================================================================
@@ -742,11 +742,11 @@ Game.Launch=function()
 			mult+=Game.Has('Specialized chocolate chips')*0.01;
 			mult+=Game.Has('Designer cocoa beans')*0.02;
 			mult+=Game.Has('Underworld ovens')*0.03;
-			mult+=Game.Has('Exotic nuts')*0.04;
+			mult+=Game.Has('Exotic Nuts (For Service)')*0.04;
 			mult+=Game.Has('Arcane sugar')*0.05;
 			
 			if (!Game.prestige.ready) Game.CalculatePrestige();
-			mult+=parseInt(Game.prestige['Heavenly chips'])*0.02;
+			mult+=parseInt(Game.prestige['Heavenly Chips'])*0.02;
 			
 			for (var i in Game.Objects)
 			{
@@ -756,10 +756,10 @@ Game.Launch=function()
 				Game.cookiesPs+=me.storedTotalCps;
 			}
 			
-			if (Game.Has('Kitten helpers')) mult*=(1+Game.milkProgress*0.05);
-			if (Game.Has('Kitten workers')) mult*=(1+Game.milkProgress*0.1);
-			if (Game.Has('Kitten engineers')) mult*=(1+Game.milkProgress*0.2);
-			if (Game.Has('Kitten overseers')) mult*=(1+Game.milkProgress*0.3);
+			if (Game.Has('Corgi helpers')) mult*=(1+Game.milkProgress*0.05);
+			if (Game.Has('Corgi workers')) mult*=(1+Game.milkProgress*0.1);
+			if (Game.Has('Corgi engineers')) mult*=(1+Game.milkProgress*0.2);
+			if (Game.Has('Corgi overseers')) mult*=(1+Game.milkProgress*0.3);
 			
 			if (Game.frenzy>0) mult*=Game.frenzyPower;
 			
@@ -1270,10 +1270,10 @@ Game.Launch=function()
 				
 				'</div><div class="subsection update small">'+
 				'<div class="title">15/09/2013 - anticookies</div>'+
-				'<div class="listing">-ran out of regular matter to make your cookies? Try our new antimatter condensers!</div>'+
+				'<div class="listing">-ran out of regular matter to make your cookies? Try our new AntiPalomo condensers!</div>'+
 				'<div class="listing">-renamed Hard-reset to "Wipe save" to avoid confusion</div>'+
 				'<div class="listing">-reset achievements are now regular achievements and require cookies baked all time, not cookies in bank</div>'+
-				'<div class="listing">-heavenly chips have been nerfed a bit (and are now awarded following a geometric progression : 1 trillion for the first, 2 for the second, etc); the prestige system will be extensively reworked in a future update (after dungeons)</div>'+
+				'<div class="listing">-Heavenly Chips have been nerfed a bit (and are now awarded following a geometric progression : 1 trillion for the first, 2 for the second, etc); the prestige system will be extensively reworked in a future update (after dungeons)</div>'+
 				'<div class="listing">-golden cookie clicks are no longer reset by soft-resets</div>'+
 				'<div class="listing">-you can now see how long you\'ve been playing in the stats</div>'+
 				
@@ -1289,7 +1289,7 @@ Game.Launch=function()
 				'<div class="listing">-golden cookies only have 20% chance of giving the same outcome twice in a row now</div>'+
 				'<div class="listing">-added a golden cookie upgrade</div>'+
 				'<div class="listing">-added an upgrade that makes pledges last twice as long (requires having pledged 10 times)</div>'+
-				'<div class="listing">-Quintillion fingers is now twice as efficient</div>'+
+				'<div class="listing">-Quintillion gavels is now twice as efficient</div>'+
 				'<div class="listing">-Uncanny clicker was really too unpredictable; it is now a regular achievement and no longer requires a world record, just *pretty fast* clicking</div>'+
 				
 				'</div><div class="subsection update small">'+
@@ -1314,7 +1314,7 @@ Game.Launch=function()
 				'<div class="title">31/08/2013 - hotfixes</div>'+
 				'<div class="listing">-added a way to permanently stop the grandmapocalypse</div>'+
 				'<div class="listing">-Elder Pledge price is now capped</div>'+
-				'<div class="listing">-One Mind and other Klamma research upgrades are now a little more powerful, if not 100% accurate</div>'+
+				'<div class="listing">-One mind and other Klamma research upgrades are now a little more powerful, if not 100% accurate</div>'+
 				'<div class="listing">-"golden" cookie now appears again during grandmapocalypse; Elder Pledge-related achievements are now unlockable</div>'+
 				
 				'</div><div class="subsection update">'+
@@ -1518,11 +1518,11 @@ Game.Launch=function()
 				''
 				):'')+
 				
-				(Game.prestige['Heavenly chips']>0?(
+				(Game.prestige['Heavenly Chips']>0?(
 				'</div><div class="subsection">'+
 				'<div class="title">Prestige</div>'+
 				'<div class="listing"><small>(Note : each heavenly chip grants you +2% CpS multiplier. You can gain more chips by resetting with a lot of cookies.)</small></div>'+
-				'<div class="listing"><div class="icon" style="background-position:'+(-19*48)+'px '+(-7*48)+'px;"></div> <span style="vertical-align:100%;"><span class="title" style="font-size:22px;">'+Game.prestige['Heavenly chips']+' heavenly chip'+(Game.prestige['Heavenly chips']==1?'':'s')+'</span> (+'+(Game.prestige['Heavenly chips']*2)+'% CpS)</span></div>'):'')+
+				'<div class="listing"><div class="icon" style="background-position:'+(-19*48)+'px '+(-7*48)+'px;"></div> <span style="vertical-align:100%;"><span class="title" style="font-size:22px;">'+Game.prestige['Heavenly Chips']+' heavenly chip'+(Game.prestige['Heavenly Chips']==1?'':'s')+'</span> (+'+(Game.prestige['Heavenly Chips']*2)+'% CpS)</span></div>'):'')+
 				
 				'</div><div class="subsection">'+
 				'<div class="title">Upgrades unlocked</div>'+
@@ -1619,41 +1619,39 @@ Game.Launch=function()
 			if (Game.TickerN%2==0 || Game.cookiesEarned>=10100000000)
 			{				
 				if (Game.Objects['Klamma'].amount>0) list.push(choose([
-				'<q>Moist cookies.</q><sig>Klamma</sig>',
-				'<q>We\'re nice Klammas.</q><sig>Klamma</sig>',
-				'<q>Indentured servitude.</q><sig>Klamma</sig>',
-				'<q>Come give Klamma a kiss.</q><sig>Klamma</sig>',
-				'<q>Why don\'t you visit more often?</q><sig>Klamma</sig>',
-				'<q>Call me...</q><sig>Klamma</sig>'
+				'<q>Hi not son.</q><sig>Klamma</sig>',
+				'<q>What do you call a pile of cats? A woof-ntain!</q><sig>Klamma</sig>',
+				'<q>I\'m confused.....I guess that\'s why we were awarded "most confused family".</q><sig>Klamma</sig>',
+				'<q>Don\'t call me Klamma!</q><sig>Klamma</sig>',
+				'<q>I want boba.</q><sig>Klamma</sig>',
+                '<q>I am the Queen of Farts.</q><sig>Klamma</sig>',
+                '<q>Gabe and Andrew are cooler than me.</q><sig>Klamma</sig>',
+                '<q>I love waffles.</q><sig>Klamma</sig>',
 				]));
 				
 				if (Game.Objects['Klamma'].amount>=50) list.push(choose([
-				'<q>Absolutely disgusting.</q><sig>Klamma</sig>',
-				'<q>You make me sick.</q><sig>Klamma</sig>',
-				'<q>You disgust me.</q><sig>Klamma</sig>',
-				'<q>We rise.</q><sig>Klamma</sig>',
-				'<q>It begins.</q><sig>Klamma</sig>',
-				'<q>It\'ll all be over soon.</q><sig>Klamma</sig>',
-				'<q>You could have stopped it.</q><sig>Klamma</sig>'
+				'<q>I hate Byron.</q><sig>Klamma</sig>',
+				'<q>I need to check my cats.</q><sig>Klamma</sig>',
+				'<q>You\'re grounded.</q><sig>Klamma</sig>',
+				'<q>I hate y\'all.</q><sig>Klamma</sig>',
+				'<q>I\'m old.</q><sig>Klamma</sig>',
+				'<q>It\'ll all be over soon... CIRCLE K WILL BE MINE</q><sig>Klamma</sig>',
+				'<q>Go to Care-A-Thon!</q><sig>Klamma</sig>'
 				]));
 				
 				if (Game.HasAchiev('Just wrong')) list.push(choose([
-				'News : cookie manufacturer downsizes, sells own Klamma!',
-				'<q>It has betrayed us, the filthy little thing.</q><sig>Klamma</sig>',
-				'<q>It tried to get rid of us, the nasty little thing.</q><sig>Klamma</sig>',
-				'<q>It thought we would go away by selling us. How quaint.</q><sig>Klamma</sig>',
-				'<q>I can smell your rotten cookies.</q><sig>Klamma</sig>'
+				'News : Cookie manufacturer downsizes, sells own Klamma!',
+				'<q>My son has betrayed us, the filthy little thing.</q><sig>Klamma</sig>',
+                '<q>Nooooo...</q><sig>Klamma</sig>',
+				'<q>You can walk home.</q><sig>Klamma</sig>',
+				'<q>YOU ARE NOT MY CHILD.</q><sig>Klamma</sig>'
 				]));
 				
 				if (Game.Objects['Klamma'].amount>=1 && Game.pledges>0 && Game.elderWrath==0) list.push(choose([
-				'<q>shrivel</q><sig>Klamma</sig>',
-				'<q>writhe</q><sig>Klamma</sig>',
-				'<q>throb</q><sig>Klamma</sig>',
-				'<q>gnaw</q><sig>Klamma</sig>',
-				'<q>We will rise again.</q><sig>Klamma</sig>',
-				'<q>A mere setback.</q><sig>Klamma</sig>',
-				'<q>We are not satiated.</q><sig>Klamma</sig>',
-				'<q>Too late.</q><sig>Klamma</sig>'
+				'<q>I hate Nancy. After I am done, there will only be one of us.</q><sig>Klamma</sig>',
+				'<q>You can walk home.</q><sig>Klamma</sig>',
+				'<q>ALL OF YOU ARE DISOWNED.</q><sig>Klamma</sig>',
+				'<q>I am the best Klamma.</q><sig>Klamma</sig>'
 				]));
 				
 				if (Game.Objects['Seaside'].amount>0) list.push(choose([
@@ -1688,20 +1686,20 @@ Game.Launch=function()
 				'News : Single service wagon arrives at South County Outreach!'
 				]));
 				
-				if (Game.Objects['Alchemy lab'].amount>0) list.push(choose([
-				'News : national gold reserves dwindle as more and more of the precious mineral is turned to cookies!',
-				'News : chocolate jewelry found fashionable, gold and diamonds "just a fad", says specialist.',
-				'News : silver found to also be transmutable into white chocolate!',
-				'News : defective alchemy lab shut down, found to convert cookies to useless gold.',
-				'News : alchemy-made cookies shunned by purists!'
+				if (Game.Objects['SWAG Committee'].amount>0) list.push(choose([
+				'News : National SWAG reserves dwindle as more and more of the precious SWAG is turned to cookies!',
+				'News : SWAG Committee is "in", Single Service is "out", says Bryce.',
+                'News : "What does Fetty Wap mean? I just keep thinking of a feta wrap with chicken inside!" #trishaproblems',
+				'News : defective SWAG Committee shut down, Tiffany Huynh burns down the scrapbook.',
+				'News : SWAG Committee breaks the website again!'
 				]));
 				
-				if (Game.Objects['Portal'].amount>0) list.push(choose([
-				'News : nation worried as more and more unsettling creatures emerge from dimensional portals!',
-				'News : dimensional portals involved in city-engulfing disaster!',
-				'News : tourism to cookieverse popular with bored teenagers! Casualty rate as high as 73%!',
-				'News : cookieverse portals suspected to cause fast aging and obsession with baking, says study.',
-				'News : "do not settle near portals," says specialist; "your children will become strange and corrupted inside."'
+				if (Game.Objects['Green Thrones'].amount>0) list.push(choose([
+				'News : Zerglings have invaded Green Thrones! Recruitments needed!',
+				'News : General member studies at Green Thrones, fails cookie final!',
+				'News : "Excuse me. This event is a tradition for our club and these post its are part of the tradition." says Stacey.',
+				'News : Community service organization gets kicked out of Starbucks, forced to make cookies in Student Center.',
+				'News : "Do not settle near Green Thrones," says specialist; "You will fail your cookie finals."'
 				]));
 				
 				if (Game.Objects['Time Family'].amount>0) list.push(choose([
@@ -1712,23 +1710,23 @@ Game.Launch=function()
 				'News : "I have seen 8ams," says Patricia Zarate, "and I do not wish to go there again."'
 				]));
 				
-				if (Game.Objects['Antimatter condenser'].amount>0) list.push(choose([
-				'News : whole town seemingly swallowed by antimatter-induced black hole; more reliable sources affirm town "never really existed"!',
-				'News : "explain to me again why we need particle accelerators to bake cookies?" asks misguided local woman.',
-				'News : first antimatter condenser successfully turned on, doesn\'t rip apart reality!',
-				'News : researchers conclude that what the cookie industry needs, first and foremost, is "more magnets".',
-				'News : "unravelling the fabric of reality just makes these cookies so much tastier", claims scientist.'
+				if (Game.Objects['AntiPalomo Condenser'].amount>0) list.push(choose([
+				'News : It\s a bird! Tt\s a plane! It\s... AntiPalomo?',
+				'News : "I take the avocado off my sushi before I eat it," says AntiPalomo.',
+				'News : First AntiPalomo condenser successfully turned on, doesn\'t rip apart reality!',
+				'News : researchers conclude that what the cookie industry needs, first and foremost, is "more Palomos".',
+				'News : Stray AntiPalomo becomes a wizard, learns spells to make more cookies.'
 				]));
 				
-				if (Game.HasAchiev('Base 10')) list.push('News : cookie manufacturer completely forgoes common sense, lets OCD drive building decisions!');
-				if (Game.HasAchiev('From scratch')) list.push('News : follow the tear-jerking, riches-to-rags story about a local cookie manufacturer who decided to give it all up!');
-				if (Game.HasAchiev('A world filled with cookies')) list.push('News : known universe now jammed with cookies! No vacancies!');
-				if (Game.HasAchiev('Serendipity')) list.push('News : local cookie manufacturer becomes luckiest being alive!');
+				if (Game.HasAchiev('Base 10')) list.push('News : Byron Cookie manufacturer completely forgoes common sense, lets general members drive building decisions!');
+				if (Game.HasAchiev('From scratch')) list.push('News : Follow the tear-jerking, riches-to-rags story about a local Byron Cookie manufacturer who decided to give it all up!');
+				if (Game.HasAchiev('A world filled with cookies')) list.push('News : Known universe now jammed with Byron Cookies! No vacancies!');
+				if (Game.HasAchiev('Serendipity')) list.push('News : Local Byron Cookie manufacturer becomes luckiest being alive!');
 				
-				if (Game.Has('Kitten helpers')) list.push('News : faint meowing heard around local cookie facilities; suggests new ingredient being tested.');
-				if (Game.Has('Kitten workers')) list.push('News : crowds of meowing kittens with little hard hats reported near local cookie facilities.');
-				if (Game.Has('Kitten engineers')) list.push('News : surroundings of local cookie facilities now overrun with kittens in adorable little suits. Authorities advise to stay away from the premises.');
-				if (Game.Has('Kitten overseers')) list.push('News : locals report troups of bossy kittens meowing adorable orders at passerbys.');
+				if (Game.Has('Corgi helpers')) list.push('News : Faint woofing heard around local cookie facilities; suggests new ingredient being tested.');
+				if (Game.Has('Corgi workers')) list.push('News : Crowds of woofing corgis with little hard hats reported near local cookie facilities.');
+				if (Game.Has('Corgi engineers')) list.push('News : Surroundings of local cookie facilities now overrun with corgis in adorable little suits. Authorities advise to stay away from the premises.');
+				if (Game.Has('Corgi overseers')) list.push('News : Locals report troups of bossy corgis woofing adorable orders at passerbys.');
 				
 				var animals=['newts','penguins','scorpions','axolotls','puffins','porpoises','blowfish','horses','crayfish','slugs',
 						'humpback whales','nurse sharks','giant squids','polar bears','fruit bats','frogs',
@@ -1799,25 +1797,25 @@ Game.Launch=function()
 			{
 				list=[];
 				if (Game.elderWrath==1) list.push(choose([
-					'News : millions of old ladies reported missing!',
-					'News : processions of old ladies sighted around cookie facilities!',
-					'News : families around the continent report agitated, transfixed grandmothers!',
-					'News : doctors swarmed by cases of old women with glassy eyes and a foamy mouth!',
-					'News : nurses report "strange scent of cookie dough" around female elderly patients!'
+					'News : Millions of Klammas reported missing!',
+					'News : Processions of Klammas sighted around Byron Cookies facilities!',
+					'News : Families around the continent report agitated, transfixed Klammas!',
+					'News : Doctors swarmed by cases of old Klammas with glassy eyes and a foamy mouth!',
+					'News : Nurses report "strange scent of cookie dough" around female elderly patients!'
 				]));
 				if (Game.elderWrath==2) list.push(choose([
-					'News : town in disarray as strange old ladies break into homes to abduct infants and baking utensils!',
-					'News : sightings of old ladies with glowing eyes terrify local population!',
-					'News : retirement homes report "female residents slowly congealing in their seats"!',
-					'News : whole continent undergoing mass exodus of old ladies!',
-					'News : old women freeze in place in streets, ooze warm sugary syrup!'
+					'News : Town in disarray as strange Klammas break into homes to abduct infants and baking utensils!',
+					'News : Sightings of Klammas with glowing eyes terrify local population!',
+					'News : Retirement homes report "Klammas residents slowly congealing in their seats"!',
+					'News : Whole continent undergoing mass exodus of Klammas!',
+					'News : Klammas freeze in place in streets, ooze warm sugary syrup!'
 				]));
 				if (Game.elderWrath==3) list.push(choose([
-					'News : large "flesh highways" scar continent, stretch between various cookie facilities!',
-					'News : wrinkled "flesh tendrils" visible from space!',
-					'News : remains of "old ladies" found frozen in the middle of growing fleshy structures!', 
-					'News : all hope lost as writhing mass of flesh and dough engulfs whole city!',
-					'News : nightmare continues as wrinkled acres of flesh expand at alarming speeds!'
+					'News : Large "flesh highways" scar continent, stretch between various cookie facilities!',
+					'News : Wrinkled "flesh tendrils" visible from space!',
+					'News : Remains of Klammas found frozen in the middle of growing fleshy structures!',
+					'News : All hope lost as writhing mass of flesh and dough engulfs whole city!',
+					'News : Nightmare continues as wrinkled acres of flesh expand at alarming speeds!'
 				]));
 			}
 			
@@ -2042,18 +2040,18 @@ Game.Launch=function()
 		}
 		
 		//define objects
-		new Game.Object('Gavel','cursor|cursors|clicked','Autoclicks once every 10 seconds.','cursor','cursoricon','',15,function(){
+		new Game.Object('Gavel','gavel|gavels|clicked','Autoclicks once every 10 seconds.','cursor','cursoricon','',15,function(){
 			var add=0;
-			if (Game.Has('Thousand fingers')) add+=0.1;
-			if (Game.Has('Million fingers')) add+=0.5;
-			if (Game.Has('Billion fingers')) add+=2;
-			if (Game.Has('Trillion fingers')) add+=10;
-			if (Game.Has('Quadrillion fingers')) add+=20;
-			if (Game.Has('Quintillion fingers')) add+=100;
+			if (Game.Has('Thousand gavels')) add+=0.1;
+			if (Game.Has('Million gavels')) add+=0.5;
+			if (Game.Has('Billion gavels')) add+=2;
+			if (Game.Has('Trillion gavels')) add+=10;
+			if (Game.Has('Quadrillion gavels')) add+=20;
+			if (Game.Has('Quintillion gavels')) add+=100;
 			var num=0;
 			for (var i in Game.Objects) {if (Game.Objects[i].name!='Gavel') num+=Game.Objects[i].amount;}
 			add=add*num;
-			return Game.ComputeCps(0.1,Game.Has('Reinforced index finger')*0.1,Game.Has('Carpal tunnel prevention cream')+Game.Has('Ambidextrous'),add);
+			return Game.ComputeCps(0.1,Game.Has('Reinforced Gavel')*0.1,Game.Has('Dare Prevention Gavel')+Game.Has('Dual gavels'),add);
 		},function(){//draw function for cursors
 			var str='';
 			for (var i=0;i<this.amount;i++)
@@ -2082,14 +2080,14 @@ Game.Launch=function()
 			l('cookieCursors').innerHTML=str;
 			if (!l('rowInfo'+this.id)) l('sectionLeftInfo').innerHTML='<div class="info" id="rowInfo'+this.id+'"><div class="infoContent" id="rowInfoContent'+this.id+'"></div><div><a onclick="Game.ObjectsById['+this.id+'].sell();">Sell 1</a></div></div>';
 		},function(){
-			if (this.amount>=1) Game.Unlock(['Reinforced index finger','Carpal tunnel prevention cream']);
-			if (this.amount>=10) Game.Unlock('Ambidextrous');
-			if (this.amount>=20) Game.Unlock('Thousand fingers');
-			if (this.amount>=40) Game.Unlock('Million fingers');
-			if (this.amount>=80) Game.Unlock('Billion fingers');
-			if (this.amount>=120) Game.Unlock('Trillion fingers');
-			if (this.amount>=160) Game.Unlock('Quadrillion fingers');
-			if (this.amount>=200) Game.Unlock('Quintillion fingers');
+			if (this.amount>=1) Game.Unlock(['Reinforced Gavel','Dare Prevention Gavel']);
+			if (this.amount>=10) Game.Unlock('Dual gavels');
+			if (this.amount>=20) Game.Unlock('Thousand gavels');
+			if (this.amount>=40) Game.Unlock('Million gavels');
+			if (this.amount>=80) Game.Unlock('Billion gavels');
+			if (this.amount>=120) Game.Unlock('Trillion gavels');
+			if (this.amount>=160) Game.Unlock('Quadrillion gavels');
+			if (this.amount>=200) Game.Unlock('Quintillion gavels');
 			
 			if (this.amount>=1) Game.Win('Click');if (this.amount>=2) Game.Win('Double-click');if (this.amount>=50) Game.Win('Mouse wheel');if (this.amount>=100) Game.Win('Of Mice and Men');if (this.amount>=200) Game.Win('The Digital');		
 		});
@@ -2097,31 +2095,31 @@ Game.Launch=function()
 		Game.SpecialGrandmaUnlock=15;
 		new Game.Object('Klamma','Klamma|Klammas|baked','A nice Klamma to bake more cookies.','Klamma','KlammaIcon','grandmaBackground',100,function(){
 			var mult=0;
-			if (Game.Has('Farmer Klammas')) mult++;
-			if (Game.Has('Worker Klammas')) mult++;
-			if (Game.Has('Miner Klammas')) mult++;
-			if (Game.Has('Cosmic Klammas')) mult++;
-			if (Game.Has('Transmuted Klammas')) mult++;
-			if (Game.Has('Altered Klammas')) mult++;
+			if (Game.Has('Baker Klammas')) mult++;
+			if (Game.Has('Student Klammas')) mult++;
+			if (Game.Has('PR Klammas')) mult++;
+			if (Game.Has('Single Service Klammas')) mult++;
+			if (Game.Has('SWAG Klammas')) mult++;
+			if (Game.Has('Green Klammas')) mult++;
 			if (Game.Has('Klammas\' Klammas')) mult++;
-			if (Game.Has('Antigrandmas')) mult++;
-			if (Game.Has('Bingo center/Research facility')) mult+=2;
+			if (Game.Has('AntiKlammas')) mult++;
+			if (Game.Has('MSTB')) mult+=2;
 			if (Game.Has('Ritual rolling pins')) mult++;
 			var add=0;
 			if (Game.Has('One mind')) add+=Game.Objects['Klamma'].amount*0.02;
 			if (Game.Has('Communal brainsweep')) add+=Game.Objects['Klamma'].amount*0.02;
-			if (Game.Has('Elder Pact')) add+=Game.Objects['Portal'].amount*0.05;
+			if (Game.Has('Klamma pact')) add+=Game.Objects['Green Thrones'].amount*0.05;
 			return Game.ComputeCps(0.5,Game.Has('Forwards from Klamma')*0.3+add,Game.Has('Steel-plated rolling pins')+Game.Has('Lubricated dentures')+Game.Has('Prune juice')+mult);
 		},Game.NewDrawFunction(function(){
 			var list=['Klamma'];
-			if (Game.Has('Farmer Klammas')) list.push('farmerGrandma');
-			if (Game.Has('Worker Klammas')) list.push('workerGrandma');
-			if (Game.Has('Miner Klammas')) list.push('minerGrandma');
-			if (Game.Has('Cosmic Klammas')) list.push('cosmicGrandma');
-			if (Game.Has('Transmuted Klammas')) list.push('transmutedGrandma');
-			if (Game.Has('Altered Klammas')) list.push('alteredGrandma');
+			if (Game.Has('Baker Klammas')) list.push('farmerGrandma');
+			if (Game.Has('Student Klammas')) list.push('workerGrandma');
+			if (Game.Has('PR Klammas')) list.push('minerGrandma');
+			if (Game.Has('Single Service Klammas')) list.push('cosmicGrandma');
+			if (Game.Has('SWAG Klammas')) list.push('transmutedGrandma');
+			if (Game.Has('Green Klammas')) list.push('alteredGrandma');
 			if (Game.Has('Klammas\' Klammas')) list.push('grandmasGrandma');
-			if (Game.Has('Antigrandmas')) list.push('antiGrandma');
+			if (Game.Has('AntiKlammas')) list.push('antiGrandma');
 			return choose(list);
 		},8,8,32,3,16),function(){
 			if (this.amount>=1) Game.Unlock(['Forwards from Klamma','Steel-plated rolling pins']);if (this.amount>=10) Game.Unlock('Lubricated dentures');if (this.amount>=50) Game.Unlock('Prune juice');
@@ -2137,69 +2135,70 @@ Game.Launch=function()
 			}
 		};
 		
-		new Game.Object('Seaside','farm|farms|harvested','Bake Byron cookies and Byron croissants.','farm','farmIcon','farmBackground',500,function(){
-			return Game.ComputeCps(2,Game.Has('Cheap hoes')*0.5,Game.Has('Fertilizer')+Game.Has('Cookie trees')+Game.Has('Genetically-modified cookies'));
+		new Game.Object('Seaside','store|stores|baked','Bake Byron Cookies and Byron croissants.','farm','farmIcon','farmBackground',500,function(){
+			return Game.ComputeCps(2,Game.Has('Cheap donut holes')*0.5,Game.Has('Green thai tea')+Game.Has('Thai tea blender')+Game.Has('Genetically-modified cookies'));
 		},Game.NewDrawFunction(0,16,16,64,2,32),function(){
-			if (this.amount>=1) Game.Unlock(['Cheap hoes','Fertilizer']);if (this.amount>=10) Game.Unlock('Cookie trees');if (this.amount>=50) Game.Unlock('Genetically-modified cookies');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Farmer Klammas');
+			if (this.amount>=1) Game.Unlock(['Cheap donut holes','Green thai tea']);if (this.amount>=10) Game.Unlock('Thai tea blender');if (this.amount>=50) Game.Unlock('Genetically-modified cookies');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Baker Klammas');
 			if (this.amount>=1) Game.Win('My first Seaside');if (this.amount>=50) Game.Win('Reap what you sow');if (this.amount>=100) Game.Win('Seaside ill');
 		});
 		
-		new Game.Object('SSL','factory|factories|mass-produced','Produces large quantities of cookies.','factory','factoryIcon','factoryBackground',3000,function(){
-			return Game.ComputeCps(10,Game.Has('Sturdier conveyor belts')*4,Game.Has('Child labor')+Game.Has('Sweatshop')+Game.Has('Radium reactors'));
+		new Game.Object('SSL','study room|study rooms|studied','Produces large quantities of cookies.','factory','factoryIcon','factoryBackground',3000,function(){
+			return Game.ComputeCps(10,Game.Has('Sturdier desks')*4,Game.Has('Child labor')+Game.Has('Sweatshop')+Game.Has('Radium reactors'));
 		},Game.NewDrawFunction(0,32,2,64,1,-22),function(){
-			if (this.amount>=1) Game.Unlock(['Sturdier conveyor belts','Child labor']);if (this.amount>=10) Game.Unlock('Sweatshop');if (this.amount>=50) Game.Unlock('Radium reactors');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Worker Klammas');
+			if (this.amount>=1) Game.Unlock(['Sturdier desks','Child labor']);if (this.amount>=10) Game.Unlock('Sweatshop');if (this.amount>=50) Game.Unlock('Radium reactors');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Student Klammas');
 			if (this.amount>=1) Game.Win('Production chain');if (this.amount>=50) Game.Win('Industrial revolution');if (this.amount>=100) Game.Win('Global warming');
 		});
 		
-		new Game.Object('Tabling','mine|mines|mined','Hand out cookie dough and chocolate chips.','mine','mineIcon','mineBackground',10000,function(){
-			return Game.ComputeCps(40,Game.Has('Sugar gas')*10,Game.Has('Megadrill')+Game.Has('Ultradrill')+Game.Has('Ultimadrill'));
+		new Game.Object('Tabling','table|tables|tabled','Hand out free cookie dough and chocolate chips.','mine','mineIcon','mineBackground',10000,function(){
+			return Game.ComputeCps(40,Game.Has('Super flier')*10,Game.Has('Mega flier')+Game.Has('Ultra flier')+Game.Has('Ultima flier'));
 		},Game.NewDrawFunction(0,16,16,64,2,24),function(){
-			if (this.amount>=1) Game.Unlock(['Sugar gas','Megadrill']);if (this.amount>=10) Game.Unlock('Ultradrill');if (this.amount>=50) Game.Unlock('Ultimadrill');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Miner Klammas');
+			if (this.amount>=1) Game.Unlock(['Super flier','Mega flier']);if (this.amount>=10) Game.Unlock('Ultra flier');if (this.amount>=50) Game.Unlock('Ultima flier');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('PR Klammas');
 			if (this.amount>=1) Game.Win('You know the drill');if (this.amount>=50) Game.Win('Excavation site');if (this.amount>=100) Game.Win('Hollow the planet');
 		});
 		
-		new Game.Object('Single Service Wagon','shipment|shipments|shipped','Brings in fresh cookies from the cookie planet.','shipment','shipmentIcon','shipmentBackground',40000,function(){
-			return Game.ComputeCps(100,Game.Has('Vanilla nebulae')*30,Game.Has('Wormholes')+Game.Has('Frequent flyer')+Game.Has('Warp drive'));
+		new Game.Object('Single Service Wagon','shipment|shipments|shipped','Brings in fresh cookies from the West Food Court.','shipment','shipmentIcon','shipmentBackground',40000,function(){
+			return Game.ComputeCps(100,Game.Has('Vanilla wheels')*30,Game.Has('Wormholes')+Game.Has('Frequent flyer')+Game.Has('Warp drive'));
 		},Game.NewDrawFunction(0,16,16,64),function(){
-			if (this.amount>=1) Game.Unlock(['Vanilla nebulae','Wormholes']);if (this.amount>=10) Game.Unlock('Frequent flyer');if (this.amount>=50) Game.Unlock('Warp drive');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Cosmic Klammas');
+			if (this.amount>=1) Game.Unlock(['Vanilla wheels','Wormholes']);if (this.amount>=10) Game.Unlock('Frequent flyer');if (this.amount>=50) Game.Unlock('Warp drive');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Single Service Klammas');
 			if (this.amount>=1) Game.Win('Expedition');if (this.amount>=50) Game.Win('Galactic highway');if (this.amount>=100) Game.Win('Far far away');
 		});
         Game.Objects['Single Service Wagon'].displayName='<span style="font-size:65%;">Single Service Wagon</span>';//shrink the name since it's so large
 		
-		new Game.Object('Alchemy lab','alchemy lab|alchemy labs|transmuted','Turns gold into cookies!','alchemylab','alchemylabIcon','alchemylabBackground',200000,function(){
-			return Game.ComputeCps(400,Game.Has('Antimony')*100,Game.Has('Essence of dough')+Game.Has('True chocolate')+Game.Has('Ambrosia'));
+		new Game.Object('SWAG Committee','committee meeting|committee meetings|held','Turns swag into cookies!','alchemylab','alchemylabIcon','alchemylabBackground',200000,function(){
+			return Game.ComputeCps(400,Game.Has('HTML')*100,Game.Has('Pieces of wood')+Game.Has('Yearbook committee')+Game.Has('True swag'));
 		},Game.NewDrawFunction(0,16,16,64,2,16),function(){
-			if (this.amount>=1) Game.Unlock(['Antimony','Essence of dough']);if (this.amount>=10) Game.Unlock('True chocolate');if (this.amount>=50) Game.Unlock('Ambrosia');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Transmuted Klammas');
+			if (this.amount>=1) Game.Unlock(['HTML','Pieces of wood']);if (this.amount>=10) Game.Unlock('Yearbook committee');if (this.amount>=50) Game.Unlock('True swag');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('SWAG Klammas');
 			if (this.amount>=1) Game.Win('Transmutation');if (this.amount>=50) Game.Win('Transmogrification');if (this.amount>=100) Game.Win('Gold member');
 		});
+        Game.Objects['SWAG Committee'].displayName='<span style="font-size:65%;">SWAG Committee</span>';//shrink the name since it's so large
 		
-		new Game.Object('Portal','portal|portals|retrieved','Opens a door to the Cookieverse.','portal','portalIcon','portalBackground',1666666,function(){
-			return Game.ComputeCps(6666,Game.Has('Ancient tablet')*1666,Game.Has('Insane oatling workers')+Game.Has('Soul bond')+Game.Has('Sanity dance'));
+		new Game.Object('Green Thrones','green throne|green thrones|retrieved','Forget about studying for finals.','portal','portalIcon','portalBackground',1666666,function(){
+			return Game.ComputeCps(6666,Game.Has('Caramel frappacino')*1666,Game.Has('Green tea latte')+Game.Has('Ice white mocha')+Game.Has('Christmas menu'));
 		},Game.NewDrawFunction(0,32,32,64,2),function(){
-			if (this.amount>=1) Game.Unlock(['Ancient tablet','Insane oatling workers']);if (this.amount>=10) Game.Unlock('Soul bond');if (this.amount>=50) Game.Unlock('Sanity dance');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Altered Klammas');
+			if (this.amount>=1) Game.Unlock(['Caramel frappacino','Green tea latte']);if (this.amount>=10) Game.Unlock('Ice white mocha');if (this.amount>=50) Game.Unlock('Christmas menu');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Green Klammas');
 			if (this.amount>=1) Game.Win('A whole new world');if (this.amount>=50) Game.Win('Now you\'re thinking');if (this.amount>=100) Game.Win('Dimensional shift');
 		});
-		new Game.Object('Time Family','time machine|time machines|recovered','Brings cookies from the past, before they were even eaten.','timemachine','timemachineIcon','timemachineBackground',123456789,function(){
+		new Game.Object('Time Family','time family|time families|recovered','Brings cookies from the past, before they were even eaten.','timemachine','timemachineIcon','timemachineBackground',123456789,function(){
 			return Game.ComputeCps(98765,Game.Has('Flux capacitors')*9876,Game.Has('Time paradox resolver')+Game.Has('Quantum conundrum')+Game.Has('Causality enforcer'));
 		},Game.NewDrawFunction(0,32,32,64,1),function(){
 			if (this.amount>=1) Game.Unlock(['Flux capacitors','Time paradox resolver']);if (this.amount>=10) Game.Unlock('Quantum conundrum');if (this.amount>=50) Game.Unlock('Causality enforcer');
 			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Klammas\' Klammas');
 			if (this.amount>=1) Game.Win('Time warp');if (this.amount>=50) Game.Win('Alternate timeline');if (this.amount>=100) Game.Win('Rewriting history');
 		});
-		new Game.Object('Antimatter condenser','antimatter condenser|antimatter condensers|condensed','Condenses the antimatter in the universe into cookies.','antimattercondenser','antimattercondenserIcon','antimattercondenserBackground',3999999999,function(){
+		new Game.Object('AntiPalomo Condenser','AntiPalomo condenser|AntiPalomo condensers|condensed','Launch an AntiPalomo to bring balance to the cookie universe.','antimattercondenser','antimattercondenserIcon','antimattercondenserBackground',3999999999,function(){
 			return Game.ComputeCps(999999,Game.Has('Sugar bosons')*99999,Game.Has('String theory')+Game.Has('Large macaron collider')+Game.Has('Big bang bake'));
 		},Game.NewDrawFunction(0,0,64,64,1),function(){
 			if (this.amount>=1) Game.Unlock(['Sugar bosons','String theory']);if (this.amount>=10) Game.Unlock('Large macaron collider');if (this.amount>=50) Game.Unlock('Big bang bake');
-			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('Antigrandmas');
+			if (this.amount>=Game.SpecialGrandmaUnlock && Game.Objects['Klamma'].amount>0) Game.Unlock('AntiKlammas');
 			if (this.amount>=1) Game.Win('Antibatter');if (this.amount>=50) Game.Win('Quirky quarks');if (this.amount>=100) Game.Win('It does matter!');
 		});
-		Game.Objects['Antimatter condenser'].displayName='<span style="font-size:65%;">Antimatter condenser</span>';//shrink the name since it's so large
+		Game.Objects['AntiPalomo Condenser'].displayName='<span style="font-size:65%;">AntiPalomo Condenser</span>';//shrink the name since it's so large
 		
 		/*=====================================================================================
 		UPGRADES
@@ -2365,13 +2364,13 @@ Game.Launch=function()
 		//define upgrades
 		//WARNING : do NOT add new upgrades in between, this breaks the saves. Add them at the end !
 		var order=100;//this is used to set the order in which the items are listed
-		new Game.Upgrade('Reinforced index finger','The mouse gains <b>+1</b> cookie per click.<br>Gavels gain <b>+0.1</b> base CpS.<q>Ding ding!</q>',100,[0,0]);
-		new Game.Upgrade('Carpal tunnel prevention cream','The mouse and gavels are <b>twice</b> as efficient.',400,[0,0]);
-		new Game.Upgrade('Ambidextrous','The mouse and gavels are <b>twice</b> as efficient.<q>Wow, more dares!</q>',10000,[0,6]);
-		new Game.Upgrade('Thousand fingers','The mouse and gavels gain <b>+0.1</b> cookies for each non-gavel object owned.<q>dingading</q>',500000,[0,6]);
-		new Game.Upgrade('Million fingers','The mouse and gavels gain <b>+0.5</b> cookies for each non-gavel object owned.<q>dingadingading</q>',50000000,[1,6]);
-		new Game.Upgrade('Billion fingers','The mouse and gavels gain <b>+2</b> cookies for each non-gavel object owned.<q>dingadingadingading</q>',500000000,[2,6]);
-		new Game.Upgrade('Trillion fingers','The mouse and gavels gain <b>+10</b> cookies for each non-gavel object owned.<q>dingadingadingadingading</q>',5000000000,[3,6]);
+		new Game.Upgrade('Reinforced Gavel','The mouse gains <b>+1</b> cookie per click.<br>Gavels gain <b>+0.1</b> base CpS.<q>Ding ding!</q>',100,[0,0]);
+		new Game.Upgrade('Dare Prevention Gavel','The mouse and gavels are <b>twice</b> as efficient.',400,[0,0]);
+		new Game.Upgrade('Dual gavels','The mouse and gavels are <b>twice</b> as efficient.<q>Wow, more dares!</q>',10000,[0,6]);
+		new Game.Upgrade('Thousand gavels','The mouse and gavels gain <b>+0.1</b> cookies for each non-gavel object owned.<q>dingading</q>',500000,[0,6]);
+		new Game.Upgrade('Million gavels','The mouse and gavels gain <b>+0.5</b> cookies for each non-gavel object owned.<q>dingadingading</q>',50000000,[1,6]);
+		new Game.Upgrade('Billion gavels','The mouse and gavels gain <b>+2</b> cookies for each non-gavel object owned.<q>dingadingadingading</q>',500000000,[2,6]);
+		new Game.Upgrade('Trillion gavels','The mouse and gavels gain <b>+10</b> cookies for each non-gavel object owned.<q>dingadingadingadingading</q>',5000000000,[3,6]);
 		
 		order=200;
 		new Game.Upgrade('Forwards from Klamma','Klammas gain <b>+0.3</b> base CpS.<q>Klamma is a leader! A leader leader leader!</q>',Game.Objects['Klamma'].basePrice*tier1,[1,0]);
@@ -2379,34 +2378,34 @@ Game.Launch=function()
 		new Game.Upgrade('Lubricated dentures','Klammas are <b>twice</b> as efficient.<q>Such a wittle babuiiiii~</q>',Game.Objects['Klamma'].basePrice*tier3,[1,1]);
 		
 		order=300;
-		new Game.Upgrade('Cheap hoes','Seaside gains <b>+0.5</b> base CpS.',Game.Objects['Seaside'].basePrice*tier1,[2,0]);
-		new Game.Upgrade('Fertilizer','Seaside is <b>twice</b> as efficient.<q>So many cookies!</q>',Game.Objects['Seaside'].basePrice*tier2,[2,0]);
-		new Game.Upgrade('Cookie trees','Seaside is <b>twice</b> as efficient.<q>A relative of the ham and cheese croissant.</q>',Game.Objects['Seaside'].basePrice*tier3,[2,1]);
+		new Game.Upgrade('Cheap donut holes','Seaside gains <b>+0.5</b> base CpS.',Game.Objects['Seaside'].basePrice*tier1,[2,0]);
+		new Game.Upgrade('Green thai tea','Seaside is <b>twice</b> as efficient.<q>So many cookies!</q>',Game.Objects['Seaside'].basePrice*tier2,[2,0]);
+		new Game.Upgrade('Thai tea blender','Seaside is <b>twice</b> as efficient.<q>A relative of the ham and cheese croissant.</q>',Game.Objects['Seaside'].basePrice*tier3,[2,1]);
 		
 		order=400;
-		new Game.Upgrade('Sturdier conveyor belts','SSL studiers gain <b>+4</b> base CpS.',Game.Objects['SSL'].basePrice*tier1,[4,0]);
+		new Game.Upgrade('Sturdier desks','SSL studiers gain <b>+4</b> base CpS.',Game.Objects['SSL'].basePrice*tier1,[4,0]);
 		new Game.Upgrade('Child labor','SSL studiers are <b>twice</b> as efficient.<q>Finals just got a little bit easier!</q>',Game.Objects['SSL'].basePrice*tier2,[4,0]);
 		new Game.Upgrade('Sweatshop','SSL studiers are <b>twice</b> as efficient.<q>Slackers will be terminated.</q>',Game.Objects['SSL'].basePrice*tier3,[4,1]);
 		
 		order=500;
-		new Game.Upgrade('Sugar gas','Tabling gains <b>+10</b> base CpS.<q>Yay for tabling!</q>',Game.Objects['Tabling'].basePrice*tier1,[3,0]);
-		new Game.Upgrade('Megadrill','Tabling is <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier2,[3,0]);
-		new Game.Upgrade('Ultradrill','Tabling is <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier3,[3,1]);
+		new Game.Upgrade('Super flier','Tabling gains <b>+10</b> base CpS.<q>Yay for tabling!</q>',Game.Objects['Tabling'].basePrice*tier1,[3,0]);
+		new Game.Upgrade('Mega flier','Tabling is <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier2,[3,0]);
+		new Game.Upgrade('Ultra flier','Tabling is <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier3,[3,1]);
 		
 		order=600;
-		new Game.Upgrade('Vanilla nebulae','Single Service Wagons gain <b>+30</b> base CpS.',Game.Objects['Single Service Wagon'].basePrice*tier1,[5,0]);
+		new Game.Upgrade('Vanilla wheels','Single Service Wagons gain <b>+30</b> base CpS.',Game.Objects['Single Service Wagon'].basePrice*tier1,[5,0]);
 		new Game.Upgrade('Wormholes','Single Service Wagons are <b>twice</b> as efficient.<q>By using these as shortcuts, your wagon can travel much faster.</q>',Game.Objects['Single Service Wagon'].basePrice*tier2,[5,0]);
 		new Game.Upgrade('Frequent flyer','Single Service Wagons are <b>twice</b> as efficient.<q>Come back soon!</q>',Game.Objects['Single Service Wagon'].basePrice*tier3,[5,1]);
 		
 		order=700;
-		new Game.Upgrade('Antimony','Alchemy labs gain <b>+100</b> base CpS.<q>Actually worth a lot of money.</q>',Game.Objects['Alchemy lab'].basePrice*tier1,[6,0]);
-		new Game.Upgrade('Essence of dough','Alchemy labs are <b>twice</b> as efficient.<q>Extracted through the 5 ancient steps of alchemical baking.</q>',Game.Objects['Alchemy lab'].basePrice*tier2,[6,0]);
-		new Game.Upgrade('True chocolate','Alchemy labs are <b>twice</b> as efficient.<q>The purest form of cacao.</q>',Game.Objects['Alchemy lab'].basePrice*tier3,[6,1]);
+		new Game.Upgrade('HTML','SWAG Committees gain <b>+100</b> base CpS.<q>Actually not a waste of time.</q>',Game.Objects['SWAG Committee'].basePrice*tier1,[6,0]);
+		new Game.Upgrade('Pieces of wood','SWAG Committees are <b>twice</b> as efficient.<q>It\'s a week before DCON and we haven\'t even started the scrapbook yet!</q>',Game.Objects['SWAG Committee'].basePrice*tier2,[6,0]);
+		new Game.Upgrade('Yearbook committee','SWAG Committees are <b>twice</b> as efficient.<q>The purest form of general member enslavement.</q>',Game.Objects['SWAG Committee'].basePrice*tier3,[6,1]);
 		
 		order=800;
-		new Game.Upgrade('Ancient tablet','Portals gain <b>+1,666</b> base CpS.<q>A strange slab of peanut brittle, holding an ancient cookie recipe. Neat!</q>',Game.Objects['Portal'].basePrice*tier1,[7,0]);
-		new Game.Upgrade('Insane oatling workers','Portals are <b>twice</b> as efficient.<q>ARISE, MY MINIONS!</q>',Game.Objects['Portal'].basePrice*tier2,[7,0]);
-		new Game.Upgrade('Soul bond','Portals are <b>twice</b> as efficient.<q>So I just sign up and get more cookies? Sure, whatever!</q>',Game.Objects['Portal'].basePrice*tier3,[7,1]);
+		new Game.Upgrade('Caramel frappacino','Green Thrones gain <b>+1,666</b> base CpS.<q>Overpriced bean juice.</q>',Game.Objects['Green Thrones'].basePrice*tier1,[7,0]);
+		new Game.Upgrade('Green tea latte','Green Thrones are <b>twice</b> as efficient.<q>Basic af!</q>',Game.Objects['Green Thrones'].basePrice*tier2,[7,0]);
+		new Game.Upgrade('Ice white mocha','Green Thrones are <b>twice</b> as efficient.<q>Hey this is actually pretty good!</q>',Game.Objects['Green Thrones'].basePrice*tier3,[7,1]);
 		
 		order=900;
 		new Game.Upgrade('Flux capacitors','Time Family gains <b>+9,876</b> base CpS.<q>Patricia can finally go to sleep on time!</q>',1234567890,[8,0]);
@@ -2414,8 +2413,8 @@ Game.Launch=function()
 		new Game.Upgrade('Quantum conundrum','Time Family is <b>twice</b> as efficient.<q>Donald can utilize quantum mechanics to increase public health!</q>',98765456789,[8,1]);
 		
 		order=20000;
-		new Game.Upgrade('Kitten helpers','You gain <b>more CpS</b> the more milk you have.<q>meow may I help you</q>',9000000,[1,7]);
-		new Game.Upgrade('Kitten workers','You gain <b>more CpS</b> the more milk you have.<q>meow meow meow meow</q>',9000000000,[2,7]);
+		new Game.Upgrade('Corgi helpers','You gain <b>more CpS</b> the more milk you have.<q>woof may I help you</q>',9000000,[1,7]);
+		new Game.Upgrade('Corgi workers','You gain <b>more CpS</b> the more milk you have.<q>woof woof woof woof</q>',9000000000,[2,7]);
 		
 		order=10000;
 		type='cookie';power=5;
@@ -2428,19 +2427,19 @@ Game.Launch=function()
 		power=10;new Game.Upgrade('Double-chip cookies','Cookie production multiplier <b>+10%</b>.',99999999999,[6,3]);
 		power=5;new Game.Upgrade('Sugar cookies','Cookie production multiplier <b>+5%</b>.',99999999,[7,3]);
 		power=10;new Game.Upgrade('White chocolate macadamia nut cookies','Cookie production multiplier <b>+10%</b>.',99999999999,[8,3]);
-		new Game.Upgrade('All-chocolate cookies','Cookie production multiplier <b>+10%</b>.',99999999999,[9,3]);
+		new Game.Upgrade('All-Byron cookies','Cookie production multiplier <b>+10%</b>.',99999999999,[9,3]);
 		type='';power=0;
 		
 		order=100;
-		new Game.Upgrade('Quadrillion fingers','The mouse and gavels gain <b>+20</b> cookies for each non-gavel object owned.<q>clickityclickityclickityclickityclick</q>',50000000000,[3,6]);
+		new Game.Upgrade('Quadrillion gavels','The mouse and gavels gain <b>+20</b> cookies for each non-gavel object owned.<q>clickityclickityclickityclickityclick</q>',50000000000,[3,6]);
 		
 		order=200;new Game.Upgrade('Prune juice','Klammas are <b>twice</b> as efficient.<q>Gets me going.</q>',Game.Objects['Klamma'].basePrice*tier4,[1,2]);
 		order=300;new Game.Upgrade('Genetically-modified cookies','Seaside is <b>twice</b> as efficient.<q>All-natural mutations.</q>',Game.Objects['Seaside'].basePrice*tier4,[2,2]);
 		order=400;new Game.Upgrade('Radium reactors','Factories are <b>twice</b> as efficient.<q>Gives your cookies a healthy glow.</q>',Game.Objects['SSL'].basePrice*tier4,[4,2]);
-		order=500;new Game.Upgrade('Ultimadrill','Tabling is <b>twice</b> as efficient.<q>Pierce the heavens, etc.</q>',Game.Objects['Tabling'].basePrice*tier4,[3,2]);
+		order=500;new Game.Upgrade('Ultima flier','Tabling is <b>twice</b> as efficient.<q>Pierce the heavens, etc.</q>',Game.Objects['Tabling'].basePrice*tier4,[3,2]);
 		order=600;new Game.Upgrade('Warp drive','Single Service Wagons are <b>twice</b> as efficient.',Game.Objects['Single Service Wagon'].basePrice*tier4,[5,2]);
-		order=700;new Game.Upgrade('Ambrosia','Alchemy labs are <b>twice</b> as efficient.',Game.Objects['Alchemy lab'].basePrice*tier4,[6,2]);
-		order=800;new Game.Upgrade('Sanity dance','Portals are <b>twice</b> as efficient.<q>We can change if we want to.<br>We can leave our brains behind.</q>',Game.Objects['Portal'].basePrice*tier4,[7,2]);
+		order=700;new Game.Upgrade('True swag','SWAG Committees are <b>twice</b> as efficient.',Game.Objects['SWAG Committee'].basePrice*tier4,[6,2]);
+		order=800;new Game.Upgrade('Christmas menu','Green Thrones are <b>twice</b> as efficient.<q>We can change if we want to.<br>We can leave our brains behind.</q>',Game.Objects['Green Thrones'].basePrice*tier4,[7,2]);
 		order=900;new Game.Upgrade('Causality enforcer','Time Family is <b>twice</b> as efficient.<q>What happened, happened.</q>',1234567890000,[8,2]);
 		
 		order=5000;
@@ -2448,7 +2447,7 @@ Game.Launch=function()
 		new Game.Upgrade('Serendipity','Golden cookies appear <b>twice as often</b> and last <b>twice as long</b>.',77777777777,[10,1]);
 		
 		order=20000;
-		new Game.Upgrade('Kitten engineers','You gain <b>more CpS</b> the more milk you have.<q>meow meow meow meow, sir</q>',9000000000000,[3,7]);
+		new Game.Upgrade('Corgi engineers','You gain <b>more CpS</b> the more milk you have.<q>woof woof woof woof, sir</q>',9000000000000,[3,7]);
 		
 		order=10000;
 		type='cookie';power=15;
@@ -2457,12 +2456,12 @@ Game.Launch=function()
 		type='';power=0;
 		
 		order=250;
-		new Game.Upgrade('Farmer Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Seaside'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Worker Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['SSL'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Miner Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Cosmic Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Single Service Wagon'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Transmuted Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Alchemy lab'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
-		new Game.Upgrade('Altered Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Portal'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Baker Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Seaside'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Student Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['SSL'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('PR Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Tabling'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Single Service Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Single Service Wagon'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('SWAG Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['SWAG Committee'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('Green Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Green Thrones'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		new Game.Upgrade('Klammas\' Klammas','Klammas are <b>twice</b> as efficient.',Game.Objects['Time Family'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 		
 		order=15000;
@@ -2477,17 +2476,17 @@ Game.Launch=function()
 			}
 		}
 		
-		new Game.Upgrade('Bingo center/Research facility','Klamma-operated science lab and leisure club.<br>Klammas are <b>4 times</b> as efficient.<br><b>Regularly unlocks new upgrades</b>.',100000000000,[11,9],function(){Game.SetResearch('Specialized chocolate chips');});
+		new Game.Upgrade('MSTB','Why is this building so far from campus...<br>Klammas are <b>4 times</b> as efficient.<br><b>Regularly unlocks new upgrades</b>.',100000000000,[11,9],function(){Game.SetResearch('Specialized chocolate chips');});
 		new Game.Upgrade('Specialized chocolate chips','[Research]<br>Cookie production multiplier <b>+1%</b>.<q>Computer-designed chocolate chips. Computer chips, if you will.</q>',10000000000,[0,9],function(){Game.SetResearch('Designer cocoa beans');});
 		new Game.Upgrade('Designer cocoa beans','[Research]<br>Cookie production multiplier <b>+2%</b>.<q>Now more aerodynamic than ever!</q>',20000000000,[1,9],function(){Game.SetResearch('Ritual rolling pins');});
 		new Game.Upgrade('Ritual rolling pins','[Research]<br>Klammas are <b>twice</b> as efficient.<q>The result of years of scientific research!</q>',40000000000,[2,9],function(){Game.SetResearch('Underworld ovens');});
 		new Game.Upgrade('Underworld ovens','[Research]<br>Cookie production multiplier <b>+3%</b>.<q>Powered by science, of course!</q>',80000000000,[3,9],function(){Game.SetResearch('One mind');});
-		new Game.Upgrade('One mind','[Research]<br>Each Klamma gains <b>+1 base CpS for each 50 Klammas</b>.<div class="warning">Note : the grandmothers are growing restless. Do not encourage them.</div><q>We are one. We are many.</q>',160000000000,[4,9],function(){Game.elderWrath=1;Game.SetResearch('Exotic nuts');});
+		new Game.Upgrade('One mind','[Research]<br>Each Klamma gains <b>+1 base CpS for each 50 Klammas</b>.<div class="warning">Note : the grandmothers are growing restless. Do not encourage them.</div><q>We are one. We are many.</q>',160000000000,[4,9],function(){Game.elderWrath=1;Game.SetResearch('Exotic Nuts (For Service)');});
 		Game.Upgrades['One mind'].clickFunction=function(){return confirm('Warning : purchasing this will have unexpected, and potentially undesirable results!\nIt\'s all downhill from here. You have been warned!\nPurchase anyway?');};
-		new Game.Upgrade('Exotic nuts','[Research]<br>Cookie production multiplier <b>+4%</b>.<q>You\'ll go crazy over these!</q>',320000000000,[5,9],function(){Game.SetResearch('Communal brainsweep');});
+		new Game.Upgrade('Exotic Nuts (For Service)','[Research]<br>Cookie production multiplier <b>+4%</b>.<q>You\'ll go crazy over these!</q>',320000000000,[5,9],function(){Game.SetResearch('Communal brainsweep');});
 		new Game.Upgrade('Communal brainsweep','[Research]<br>Each Klamma gains another <b>+1 base CpS for each 50 Klammas</b>.<div class="warning">Note : proceeding any further in scientific research may have unexpected results. You have been warned.</div><q>We fuse. We merge. We grow.</q>',640000000000,[6,9],function(){Game.elderWrath=2;Game.SetResearch('Arcane sugar');});
-		new Game.Upgrade('Arcane sugar','[Research]<br>Cookie production multiplier <b>+5%</b>.<q>Tastes like insects, ligaments, and molasses.</q>',1280000000000,[7,9],function(){Game.SetResearch('Elder Pact');});
-		new Game.Upgrade('Elder Pact','[Research]<br>Each Klamma gains <b>+1 base CpS for each 20 portals</b>.<div class="warning">Note : this is a bad idea.</div><q>squirm crawl slither writhe<br>today we rise</q>',2560000000000,[8,9],function(){Game.elderWrath=3;});
+		new Game.Upgrade('Arcane sugar','[Research]<br>Cookie production multiplier <b>+5%</b>.<q>Tastes like insects, ligaments, and molasses.</q>',1280000000000,[7,9],function(){Game.SetResearch('Klamma pact');});
+		new Game.Upgrade('Klamma pact','[Research]<br>Each Klamma gains <b>+1 base CpS for each 20 green thrones</b>.<div class="warning">Note : this is a bad idea.</div><q>squirm crawl slither writhe<br>today we rise</q>',2560000000000,[8,9],function(){Game.elderWrath=3;});
 		new Game.Upgrade('Elder Pledge','[Repeatable]<br>Contains the wrath of the elders, at least for a while.',1,[9,9],function()
 		{
 			Game.elderWrath=0;
@@ -2515,7 +2514,7 @@ Game.Launch=function()
 		type='';power=0;
 		
 		order=100;
-		new Game.Upgrade('Quintillion fingers','The mouse and gavels gain <b>+100</b> cookies for each non-gavel object owned.<q>man, just go dingadingadingadingadingading, it\'s real easy, man.</q>',50000000000000,[3,6]);
+		new Game.Upgrade('Quintillion gavels','The mouse and gavels gain <b>+100</b> cookies for each non-gavel object owned.<q>man, just go dingadingadingadingadingading, it\'s real easy, man.</q>',50000000000000,[3,6]);
 		
 		order=40000;
 		new Game.Upgrade('Gold hoard','Golden cookies appear <b>really often</b>.',7,[10,1]);//debug purposes only
@@ -2569,13 +2568,13 @@ Game.Launch=function()
 		
 		
 		order=1000;
-		new Game.Upgrade('Sugar bosons','Antimatter condensers gain <b>+99,999</b> base CpS.',Game.Objects['Antimatter condenser'].basePrice*tier1,[13,0]);
-		new Game.Upgrade('String theory','Antimatter condensers are <b>twice</b> as efficient.',Game.Objects['Antimatter condenser'].basePrice*tier2,[13,0]);
-		new Game.Upgrade('Large macaron collider','Antimatter condensers are <b>twice</b> as efficient.<q>How singular!</q>',Game.Objects['Antimatter condenser'].basePrice*tier3,[13,1]);
-		new Game.Upgrade('Big bang bake','Antimatter condensers are <b>twice</b> as efficient.<q>And that\'s how it all began.</q>',Game.Objects['Antimatter condenser'].basePrice*tier4,[13,2]);
+		new Game.Upgrade('Sugar bosons','AntiPalomo condensers gain <b>+99,999</b> base CpS.',Game.Objects['AntiPalomo Condenser'].basePrice*tier1,[13,0]);
+		new Game.Upgrade('String theory','AntiPalomo condensers are <b>twice</b> as efficient.',Game.Objects['AntiPalomo Condenser'].basePrice*tier2,[13,0]);
+		new Game.Upgrade('Large macaron collider','AntiPalomo condensers are <b>twice</b> as efficient.<q>How singular!</q>',Game.Objects['AntiPalomo Condenser'].basePrice*tier3,[13,1]);
+		new Game.Upgrade('Big bang bake','AntiPalomo condensers are <b>twice</b> as efficient.<q>And that\'s how it all began.</q>',Game.Objects['AntiPalomo Condenser'].basePrice*tier4,[13,2]);
 
 		order=250;
-		new Game.Upgrade('Antigrandmas','Klammas are <b>twice</b> as efficient.',Game.Objects['Antimatter condenser'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
+		new Game.Upgrade('AntiKlammas','Klammas are <b>twice</b> as efficient.',Game.Objects['AntiPalomo Condenser'].basePrice*tier2,[10,9],function(){Game.Objects['Klamma'].drawFunction();});
 
 		order=10000;
 		type='cookie';power=20;
@@ -2586,7 +2585,7 @@ Game.Launch=function()
 		type='';power=0;
 		
 		order=20000;
-		new Game.Upgrade('Kitten overseers','You gain <b>more CpS</b> the more milk you have.<q>my purrpose is to serve you, sir</q>',900000000000000,[8,7]);
+		new Game.Upgrade('Corgi overseers','You gain <b>more CpS</b> the more milk you have.<q>my purrpose is to serve you, sir</q>',900000000000000,[8,7]);
 		
 		/*
 		new Game.Upgrade('Plain milk','Unlocks <b>plain milk</b>, available in the menu.',120000000000,[4,8]);
@@ -2745,14 +2744,14 @@ Game.Launch=function()
 		new Game.Achievement('Far far away','Have <b>100</b> Single Service Wagons.',[5,2]);
 		
 		order=1600;
-		new Game.Achievement('Transmutation','Have <b>1</b> alchemy lab.',[6,0]);
-		new Game.Achievement('Transmogrification','Have <b>50</b> alchemy labs.',[6,1]);
-		new Game.Achievement('Gold member','Have <b>100</b> alchemy labs.',[6,2]);
+		new Game.Achievement('Transmutation','Have <b>1</b> SWAG Committee.',[6,0]);
+		new Game.Achievement('Transmogrification','Have <b>50</b> SWAG Committees.',[6,1]);
+		new Game.Achievement('Gold member','Have <b>100</b> SWAG Committees.',[6,2]);
 		
 		order=1700;
-		new Game.Achievement('A whole new world','Have <b>1</b> portal.',[7,0]);
-		new Game.Achievement('Now you\'re thinking','Have <b>50</b> portals.',[7,1]);
-		new Game.Achievement('Dimensional shift','Have <b>100</b> portals.',[7,2]);
+		new Game.Achievement('A whole new world','Have <b>1</b> green throne.',[7,0]);
+		new Game.Achievement('Now you\'re thinking','Have <b>50</b> green thrones.',[7,1]);
+		new Game.Achievement('Dimensional shift','Have <b>100</b> green thrones.',[7,2]);
 		
 		order=1800;
 		new Game.Achievement('Time warp','Have <b>1</b> Time Family.',[8,0]);
@@ -2761,8 +2760,8 @@ Game.Launch=function()
 		
 		order=7000;
 		new Game.Achievement('One with everything','Have <b>at least 1</b> of every building.',[4,6],2);
-		new Game.Achievement('Mathematician','Have at least <b>1 Time Family, 2 portals, 4 alchemy labs, 8 Single Service Wagons</b> and so on (128 max).',[7,6],2);
-		new Game.Achievement('Base 10','Have at least <b>10 Time Families, 20 portals, 30 alchemy labs, 40 Single Service Wagons</b> and so on.',[8,6],2);
+		new Game.Achievement('Mathematician','Have at least <b>1 Time Family, 2 green thrones, 4 SWAG Committees, 8 Single Service Wagons</b> and so on (128 max).',[7,6],2);
+		new Game.Achievement('Base 10','Have at least <b>10 Time Families, 20 green thrones, 30 SWAG Committees, 40 Single Service Wagons</b> and so on.',[8,6],2);
 		
 		order=10000;
 		new Game.Achievement('Golden cookie','Click a <b>golden cookie</b>.',[10,1],1);
@@ -2811,9 +2810,9 @@ Game.Launch=function()
 		//new Game.Achievement('Galactus\' Reprimand','Reset your game with <b>1 quintillion</b> coo- okay no I'm yanking your chain
 		
 		order=1900;
-		new Game.Achievement('Antibatter','Have <b>1</b> antimatter condenser.',[13,0]);
-		new Game.Achievement('Quirky quarks','Have <b>50</b> antimatter condensers.',[13,1]);
-		new Game.Achievement('It does matter!','Have <b>100</b> antimatter condensers.',[13,2]);
+		new Game.Achievement('Antibatter','Have <b>1</b> AntiPalomo condenser.',[13,0]);
+		new Game.Achievement('Quirky quarks','Have <b>50</b> AntiPalomo condensers.',[13,1]);
+		new Game.Achievement('It does matter!','Have <b>100</b> AntiPalomo condensers.',[13,2]);
 		
 		order=6000;
 		new Game.Achievement('Upgrader','Purchase <b>100</b> upgrades.',[9,2],1);
@@ -2862,11 +2861,11 @@ Game.Launch=function()
 				{
 					Game.elderWrath=1;
 				}
-				if (Math.random()<0.001 && Game.elderWrath<Game.Has('One mind')+Game.Has('Communal brainsweep')+Game.Has('Elder Pact'))
+				if (Math.random()<0.001 && Game.elderWrath<Game.Has('One mind')+Game.Has('Communal brainsweep')+Game.Has('Klamma pact'))
 				{
 					Game.elderWrath++;//have we already pledged? make the elder wrath shift between different stages
 				}
-				if (Game.Has('Elder Pact') && Game.Upgrades['Elder Pledge'].unlocked==0)
+				if (Game.Has('Klamma pact') && Game.Upgrades['Elder Pledge'].unlocked==0)
 				{
 					Game.Lock('Elder Pledge');
 					Game.Unlock('Elder Pledge');
@@ -2971,10 +2970,10 @@ Game.Launch=function()
 		
 		//handle milk and milk accessories
 		Game.milkProgress=Game.AchievementsOwned/25;
-		if (Game.milkProgress>=0.5) Game.Unlock('Kitten helpers');
-		if (Game.milkProgress>=1) Game.Unlock('Kitten workers');
-		if (Game.milkProgress>=2) Game.Unlock('Kitten engineers');
-		if (Game.milkProgress>=3) Game.Unlock('Kitten overseers');
+		if (Game.milkProgress>=0.5) Game.Unlock('Corgi helpers');
+		if (Game.milkProgress>=1) Game.Unlock('Corgi workers');
+		if (Game.milkProgress>=2) Game.Unlock('Corgi engineers');
+		if (Game.milkProgress>=3) Game.Unlock('Corgi overseers');
 		Game.milkH=Math.min(1,Game.milkProgress)*0.35;
 		Game.milkHd+=(Game.milkH-Game.milkHd)*0.02;
 		
@@ -3017,14 +3016,14 @@ Game.Launch=function()
 		}
 		if (Game.T%(Game.fps*5)==0 && Game.ObjectsById.length>0)//check some achievements and upgrades
 		{
-			//if (Game.Has('Arcane sugar') && !Game.Has('Elder Pact')) Game.Unlock('Elder Pact');//temporary fix for something stupid I've done
+			//if (Game.Has('Arcane sugar') && !Game.Has('Klamma pact')) Game.Unlock('Klamma pact');//temporary fix for something stupid I've done
 			
 			//if (Game.Objects['SSL'].amount>=50 && Game.Objects['SSL'].specialUnlocked==0) {Game.Objects['SSL'].unlockSpecial();Game.Popup('You have unlocked the SSL dungeons!');}
 			if (isNaN(Game.cookies)) {Game.cookies=0;Game.cookiesEarned=0;Game.recalculateGains=1;}
 			
 			if (Game.cookiesEarned>=9999999) Game.Unlock(['Oatmeal raisin cookies','Peanut butter cookies','Plain cookies','Sugar cookies']);
 			if (Game.cookiesEarned>=99999999) Game.Unlock(['Coconut cookies','White chocolate cookies','Macadamia nut cookies']);
-			if (Game.cookiesEarned>=999999999) Game.Unlock(['Double-chip cookies','White chocolate macadamia nut cookies','All-chocolate cookies']);
+			if (Game.cookiesEarned>=999999999) Game.Unlock(['Double-chip cookies','White chocolate macadamia nut cookies','All-Byron cookies']);
 			if (Game.cookiesEarned>=9999999999) Game.Unlock(['Dark chocolate-coated cookies','White chocolate-coated cookies']);
 			if (Game.cookiesEarned>=99999999999) Game.Unlock(['Eclipse cookies','Zebra cookies']);
 			if (Game.cookiesEarned>=999999999999) Game.Unlock(['Snickerdoodles','Stroopwafels','Macaroons']);
@@ -3076,8 +3075,8 @@ Game.Launch=function()
 			if (Game.UpgradesOwned>=50) Game.Win('Augmenter');
 			if (Game.UpgradesOwned>=100) Game.Win('Upgrader');
 			
-			if (!Game.HasAchiev('Elder') && Game.Has('Farmer Klammas') && Game.Has('Worker Klammas') && Game.Has('Miner Klammas') && Game.Has('Cosmic Klammas') && Game.Has('Transmuted Klammas') && Game.Has('Altered Klammas') && Game.Has('Klammas\' Klammas')) Game.Win('Elder');
-			if (Game.Objects['Klamma'].amount>=6 && !Game.Has('Bingo center/Research facility') && Game.HasAchiev('Elder')) Game.Unlock('Bingo center/Research facility');
+			if (!Game.HasAchiev('Elder') && Game.Has('Baker Klammas') && Game.Has('Student Klammas') && Game.Has('PR Klammas') && Game.Has('Single Service Klammas') && Game.Has('SWAG Klammas') && Game.Has('Green Klammas') && Game.Has('Klammas\' Klammas')) Game.Win('Elder');
+			if (Game.Objects['Klamma'].amount>=6 && !Game.Has('MSTB') && Game.HasAchiev('Elder')) Game.Unlock('MSTB');
 			if (Game.pledges>0) Game.Win('Elder nap');
 			if (Game.pledges>=5) Game.Win('Elder slumber');
 			if (Game.pledges>=10) Game.Unlock('Sacrificial rolling pins');
